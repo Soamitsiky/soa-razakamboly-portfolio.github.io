@@ -228,7 +228,7 @@ export default function Home() {
       </section>
 
       <footer style={{ textAlign: "center", padding: "2rem", borderTop: "1px solid rgba(56,189,248,0.1)", color: "var(--muted)", fontSize: "0.78rem", position: "relative", zIndex: 1 }}>
-        Conçu avec ❤️ — Soa Razakamboly · 2026
+        Conçu par Soa Razakamboly 
       </footer>
     </div>
   );
