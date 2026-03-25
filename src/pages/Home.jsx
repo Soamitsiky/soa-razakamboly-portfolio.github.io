@@ -76,7 +76,7 @@ export default function Home() {
           </div>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", animation: "fadeUp 0.7s 0.6s both" }}>
-            <Link to="/contact" className="btn btn-primary">Me contacter →</Link>
+            <Link to="/cv" className="btn btn-primary"> Voir mon CV →</Link>
             <Link to="/projects" className="btn btn-outline">Voir mes projets</Link>
           </div>
 
@@ -213,6 +213,79 @@ export default function Home() {
         </div>
       </section>
       */}
+
+      {/* QUICK NAV */}
+<section style={{ padding: "4rem 8vw" }}>
+  <div className="reveal">
+    
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "1rem" }}>
+      {[
+        { label: "Expériences", path: "/experiences", color: "#38BDF8" },
+        { label: "Compétences", path: "/skills", color: "#818CF8" },
+        { label: "Projets", path: "/projects", color: "#34D399" },
+        { label: "Formation", path: "/education", color: "#FB923C" },
+        { label: "Alternance", path: "/alternance", color: "#F472B6" },
+        { label: "Contact", path: "/contact", color: "#38BDF8" },
+      ].map(item => (
+        <Link key={item.path} to={item.path} style={{ textDecoration: "none" }}>
+          <div
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.borderColor = item.color;
+              e.currentTarget.style.boxShadow = `0 16px 40px ${item.color}30`;
+              e.currentTarget.querySelector("span").style.width = "100%";
+              e.currentTarget.querySelector("div").style.color = item.color;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.borderColor = "rgba(56,189,248,0.15)";
+              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.querySelector("span").style.width = "0%";
+              e.currentTarget.querySelector("div").style.color = "var(--white)";
+            }}
+            style={{
+              padding: "1.8rem 1.5rem",
+              borderRadius: 12,
+              border: "1px solid rgba(56,189,248,0.15)",
+              background: "rgba(7,18,36,0.6)",
+              cursor: "none",
+              transition: "transform 0.3s, border-color 0.3s, box-shadow 0.3s",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {/* Ligne animée en bas */}
+            <span style={{
+              position: "absolute", bottom: 0, left: 0,
+              height: "2px", width: "0%",
+              background: item.color,
+              transition: "width 0.3s ease",
+              display: "block",
+            }} />
+            <div style={{
+              fontFamily: "var(--font)", fontWeight: 800,
+              fontSize: "1rem", color: "var(--white)",
+              transition: "color 0.3s",
+              letterSpacing: "0.02em",
+            }}>
+              {item.label}
+            </div>
+            <div style={{
+              fontFamily: "var(--mono)", fontSize: "0.7rem",
+              color: "var(--muted)", marginTop: "0.4rem",
+            }}>
+              Voir →
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
 
       {/* CTA CONTACT */}
       <section style={{ padding: "5rem 8vw", textAlign: "center" }}>
