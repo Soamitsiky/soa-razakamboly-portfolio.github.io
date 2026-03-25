@@ -130,7 +130,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS PREVIEW */}
+      {/* SKILLS PREVIEW 
       <section style={{ padding: "4rem 8vw", background: "rgba(7,18,36,0.6)" }}>
         <div className="reveal">
           <div className="page-label">// Compétences clés</div>
@@ -155,8 +155,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */
 
-      {/* EXPERIENCES PREVIEW */}
+      /* EXPERIENCES PREVIEW 
       <section style={{ padding: "4rem 8vw" }}>
         <div className="reveal">
           <div className="page-label">// Parcours</div>
@@ -182,8 +183,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */
 
-      {/* PROJECTS PREVIEW */}
+      /* PROJECTS PREVIEW 
       <section style={{ padding: "4rem 8vw", background: "rgba(7,18,36,0.6)" }}>
         <div className="reveal">
           <div className="page-label">// Réalisations</div>
@@ -210,6 +212,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA CONTACT */}
       <section style={{ padding: "5rem 8vw", textAlign: "center" }}>
