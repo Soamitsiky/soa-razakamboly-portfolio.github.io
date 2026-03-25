@@ -5,7 +5,7 @@ export const profile = {
   presentation: "Étudiante passionnée par les systèmes, la cybersécurité et le cloud computing, je partage ici mes projets, mes compétences clés et les outils que j'utilise au quotidien.",
   disponibilite: "Alternance dès Septembre 2026",
   email: "mitsikyraza@gmail.com",
-  phone: "07 81 04 52 87",
+  //phone: "07 81 04 52 87",
   location: "Hauts-de-France",
   linkedin: "https://www.linkedin.com/in/soa-razakamboly-7016b0327/",
   photo: "photosoa.jpg",

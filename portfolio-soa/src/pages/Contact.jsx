@@ -36,7 +36,7 @@ export default function Contact() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
             {[
               { icon: "✉️", label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-              { icon: "📱", label: "Téléphone", value: profile.phone, href: `tel:+33781045287` },
+              {/*{ icon: "📱", label: "Téléphone", value: profile.phone, href: `tel:+33781045287` },*/},
               { icon: "💼", label: "LinkedIn", value: "Voir mon profil", href: profile.linkedin },
               { icon: "📍", label: "Localisation", value: profile.location, href: null },
             ].map(c => (

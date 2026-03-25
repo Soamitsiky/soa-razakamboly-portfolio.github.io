@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { profile, skills } from "../data/data";
+import { Link } from "react-router-dom";
+
 
 export default function About() {
   useEffect(() => {
@@ -110,6 +112,22 @@ export default function About() {
           ))}
         </div>
       </div>*/}
+      <div className="reveal" style={{ textAlign: "center", marginTop: "3rem" }}>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>// Compétences</div>
+          <h2 style={{
+            fontFamily: "var(--font)", fontWeight: 800,
+            fontSize: "clamp(1.5rem, 3vw, 2rem)",
+            background: "var(--grad)", WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent", marginBottom: "1rem"
+          }}>
+          Stack technique
+        </h2>
+        <p style={{ color: "var(--muted)", marginBottom: "2rem", lineHeight: 1.8 }}>
+          Découvrez les outils et technologies que j'utilise au quotidien.
+        </p>
+        <Link to="/experiences" className="btn btn-outline">Voir mes compétences →</Link>
+      </div>
+
     </div>
   );
 }

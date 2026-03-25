@@ -6,6 +6,7 @@ const links = [
   { path: "/about", label: "À propos" },
   { path: "/experiences", label: "Expériences" },
   { path: "/projects", label: "Projets" },
+  { path: "/skills", label: "Compétences" },
   { path: "/education", label: "Formation" },
   { path: "/alternance", label: "Alternance" },
   { path: "/recommendations", label: "Recommandations" },
