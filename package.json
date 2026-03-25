@@ -2,7 +2,7 @@
   "name": "portfolio-soa",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://Soamitsiky.github.io/soa-razakamboly-portfolio.github.io",
+  "homepage": "https://soamitsiky.github.io/portfolio-soa",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
