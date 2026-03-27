@@ -26,7 +26,7 @@ export default function About() {
           <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: "1rem", marginBottom: "1.5rem" }}>
           </p>
           <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: "1.5rem", marginBottom: "2rem" }}>
-            <strong style={{ color: "var(--white)" }}>Etudiante en BUT Réseaux & Systèmes à l'IUT de Villeneuve-d'Ascq</strong>
+            <strong style={{ color: "var(--white)" }}>Étudiante en 3ème année de BUT Réseaux & Systèmes </strong>à l'IUT de Villeneuve-d'Ascq
           </p>
 
           {/* Infos rapides */}

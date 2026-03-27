@@ -70,14 +70,13 @@ export default function Home() {
           </p>
 
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "2.5rem", animation: "fadeUp 0.7s 0.5s both" }}>
-            {["Cloud", "DevOps", "Réseaux", "Cybersécurité"].map(t => (
+            {["Cloud", "Réseaux", "Systèmes", "Cybersécurité"].map(t => (
               <span key={t} className="tag">{t}</span>
             ))}
           </div>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", animation: "fadeUp 0.7s 0.6s both" }}>
             <Link to="/cv" className="btn btn-primary"> Voir mon CV →</Link>
-            <Link to="/projects" className="btn btn-outline">Voir mes projets</Link>
           </div>
 
           {/* Stats */}
