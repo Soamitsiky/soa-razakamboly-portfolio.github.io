@@ -2,10 +2,10 @@ export const profile = {
   name: "Soa Razakamboly",
   title: "Étudiante en BUT Réseaux & Systèmes",
   subtitle: "Cloud Computing · Administration Systèmes & Réseaux · DevOps",
-  presentation: "Bienvenue sur mon Portfolio, je partage ici mes projets, mes compétences clés et les outils que j'utilise au quotidien.",
-  disponibilite: "Recherche - Alternance dès Septembre 2026",
+  presentation: "Étudiante passionnée par les systèmes, la cybersécurité et le cloud computing, je partage ici mes projets, mes compétences clés et les outils que j'utilise au quotidien.",
+  disponibilite: "Alternance dès Septembre 2026",
   email: "mitsikyraza@gmail.com",
-  phone: "07 81 04 52 87",
+  //phone: "07 81 04 52 87",
   location: "Hauts-de-France",
   linkedin: "https://www.linkedin.com/in/soa-razakamboly-7016b0327/",
   photo: "photosoa.jpg",
@@ -13,9 +13,9 @@ export const profile = {
   hobbies: ["🏊 Natation", "🎨 Dessin & Peinture", "🎸 Guitare"],
   objectif: "",
   languages: [
-    { name: "Français", level: "Courant", icon: "🇫🇷" },
-    { name: "Anglais", level: "Courant", icon: "🇬🇧" },
-    { name: "Malgache", level: "Natif", icon: "🇲🇬" },
+    { name: "Français", level: "Courant", flag: "🇫🇷" },
+    { name: "Anglais", level: "Courant", flag: "🇬🇧" },
+    { name: "Malgache", level: "Natif", flag: "🇲🇬" },
   ],
 };
 
@@ -49,6 +49,12 @@ export const skills = [
     icon: "💻",
     color: "#F472B6",
     items: ["Python", "C", "C++"],
+  },
+   {
+    category: "Méthodes de travail",
+    color: "#34D399",
+    icon: "⚙️",
+    items: ["ITIL", "Agile", "Scrum"],
   },
 ];
 
@@ -224,7 +230,7 @@ export const projects = [
 
 export const education = [
   {
-    degree: "BUT Réseaux & Systèmes",
+    degree: "BUT 3 Réseaux & Systèmes",
     school: "IUT A Villeneuve-d'Ascq",
     year: "2025 – 2026",
     icon: "🎓",
@@ -234,7 +240,7 @@ export const education = [
     degree: "DEUST Infrastructures Numériques",
     school: "Université de Lille",
     year: "2023 – 2025",
-    note: "Mention Bien — 14,51/20 en 1ère année",
+    note: "Mention Bien",
     icon: "🏅",
     color: "#818CF8",
   },

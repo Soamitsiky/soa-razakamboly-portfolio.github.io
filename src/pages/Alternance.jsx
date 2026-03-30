@@ -52,6 +52,18 @@ export default function Alternance() {
         </div>
       </div>
 
+      {/* Vidéo */}
+      <div className="reveal" style={{ marginBottom: "3rem" }}>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>// Vidéo de motivation</div>
+        <div className="card" style={{ textAlign: "center", padding: "3rem" }}>
+          <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🎬</div>
+          <p style={{ color: "var(--muted)", marginBottom: "1.5rem" }}>Découvrez ma vidéo de motivation</p>
+          <a href={alternance.videoMotivation} target="_blank" rel="noreferrer" className="btn btn-primary">
+            ▶ Voir la vidéo
+          </a>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="reveal" style={{ textAlign: "center" }}>
         <Link to="/contact" className="btn btn-outline">Me contacter →</Link>

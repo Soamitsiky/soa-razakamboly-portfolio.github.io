@@ -50,6 +50,12 @@ export const skills = [
     color: "#F472B6",
     items: ["Python", "C", "C++"],
   },
+   {
+    category: "Méthodes de travail",
+    color: "#34D399",
+    icon: "⚙️",
+    items: ["ITIL", "Agile", "Scrum"],
+  },
 ];
 
 export const experiences = [
@@ -224,7 +230,7 @@ export const projects = [
 
 export const education = [
   {
-    degree: "BUT Réseaux & Systèmes",
+    degree: "BUT 3 Réseaux & Systèmes",
     school: "IUT A Villeneuve-d'Ascq",
     year: "2025 – 2026",
     icon: "🎓",
@@ -234,7 +240,7 @@ export const education = [
     degree: "DEUST Infrastructures Numériques",
     school: "Université de Lille",
     year: "2023 – 2025",
-    note: "Mention Bien — 14,51/20 en 1ère année",
+    note: "Mention Bien",
     icon: "🏅",
     color: "#818CF8",
   },

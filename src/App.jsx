@@ -14,7 +14,6 @@ import Alternance from "./pages/Alternance";
 import Recommendations from "./pages/Recommendations";
 import Contact from "./pages/Contact";
 import CV from "./pages/CV";
-import Skills from "./pages/Skills";
 import "./App.css";
 
 export default function App() {
@@ -33,7 +32,6 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/experiences" element={<Experiences />} />
             <Route path="/experiences/:id" element={<ExperienceDetail />} />
-            <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/education" element={<Education />} />
