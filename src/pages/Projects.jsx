@@ -14,7 +14,7 @@ export default function Projects() {
   return (
     <div className="page" style={{ position: "relative", zIndex: 1 }}>
       <div className="page-header">
-        <div className="page-label">// Réalisations</div>
+      
         <h1 className="page-title">Projets</h1>
         <p className="page-subtitle">Cliquez sur un projet pour voir les détails techniques.</p>
       </div>

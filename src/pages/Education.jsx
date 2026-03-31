@@ -13,7 +13,7 @@ export default function Education() {
   return (
     <div className="page" style={{ position: "relative", zIndex: 1 }}>
       <div className="page-header">
-        <div className="page-label">// Formation</div>
+      
         <h1 className="page-title">Parcours académique</h1>
       </div>
 
@@ -37,15 +37,7 @@ export default function Education() {
         </div>
       </div>
 
-      {/* Hobbies */}
-      <div className="reveal">
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Centres d'intérêt</div>
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          {profile.hobbies.map(h => (
-            <div key={h} className="card" style={{ padding: "0.8rem 1.5rem", fontWeight: 600 }}>{h}</div>
-          ))}
-        </div>
-      </div>
+      
     </div>
   );
 }

@@ -15,18 +15,15 @@ export default function About() {
       <div className="page-header">
         
         <h1 className="page-title">Qui suis-je ?</h1>
-        <p className="page-subtitle">Étudiante passionnée par les systèmes, la cybersécurité et le cloud.</p>
       </div>
 
       {/* Présentation + photo */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "4rem", alignItems: "start", marginBottom: "4rem", flexWrap: "wrap" }} className="reveal">
         <div>
-          <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: "1rem", marginBottom: "1.5rem" }}>
-            {profile.presentation}
-          </p>
-          <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: "1rem", marginBottom: "2rem" }}>
-            Actuellement en <strong style={{ color: "var(--white)" }}>BUT Réseaux & Systèmes</strong> à l'IUT de Villeneuve-d'Ascq, je recherche une alternance à partir de septembre 2026 dans les <strong style={{ color: "var(--white)" }}>Hauts-de-France</strong>.
-          </p>
+         
+          <h1 style={{ color: "var(--muted)", lineHeight: 2, fontSize: "1.5rem", marginBottom: "2rem" }}>
+            Étudiante en <strong style={{ color: "var(--white)" }}> BUT 3ème année Réseaux & Systèmes</strong> à l'IUT de Villeneuve-d'Ascq.
+          </h1>
 
           {/* Infos rapides */}
           <div className="card" style={{ display: "inline-block", minWidth: 300 }}>
@@ -34,8 +31,6 @@ export default function About() {
             {[
               ["Formation", "BUT Réseaux & Systèmes"],
               ["École", "IUT A Villeneuve-d'Ascq"],
-              ["Disponibilité", "Sept. 2026"],
-              ["Mobilité", "Hauts-de-France"],
               ["Email", profile.email],
             ].map(([k, v]) => (
               <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "0.55rem 0", borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: "0.85rem", gap: "2rem" }}>
@@ -58,7 +53,7 @@ export default function About() {
 
       {/* Soft skills */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Soft skills</div>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>Soft skills</div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
           {profile.softSkills.map(s => (
             <span key={s} className="card" style={{ padding: "0.6rem 1.2rem", fontSize: "0.88rem", fontWeight: 600, cursor: "default" }}>{s}</span>
@@ -68,7 +63,7 @@ export default function About() {
 
       {/* Langues */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Langues</div>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>Langues</div>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           {profile.languages.map(l => (
             <div key={l.name} className="card" style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.9rem 1.5rem" }}>
@@ -84,7 +79,7 @@ export default function About() {
 
       {/* Centres d'intérêt */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Centres d'intérêt</div>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>Centres d'intérêt</div>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
           {profile.hobbies.map(h => (
             <div key={h} className="card" style={{ padding: "0.8rem 1.5rem", fontWeight: 600, cursor: "default" }}>{h}</div>
@@ -92,25 +87,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* Compétences complètes */}
-      <div className="reveal">
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Stack technique</div>
-        <div className="grid-3">
-          {skills.map((s, i) => (
-            <div key={i} className="card">
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-                <span style={{ fontSize: "1.4rem" }}>{s.icon}</span>
-                <span style={{ fontWeight: 700, fontSize: "0.9rem", color: s.color }}>{s.category}</span>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                {s.items.map(item => (
-                  <span key={item} style={{ padding: "0.25rem 0.65rem", borderRadius: 5, fontSize: "0.7rem", background: `${s.color}18`, color: s.color, border: `1px solid ${s.color}30` }}>{item}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      
     </div>
   );
 }

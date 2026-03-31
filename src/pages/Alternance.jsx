@@ -14,7 +14,7 @@ export default function Alternance() {
   return (
     <div className="page" style={{ position: "relative", zIndex: 1 }}>
       <div className="page-header">
-        <div className="page-label">// Recherche</div>
+        
         <h1 className="page-title">Recherche d'alternance</h1>
         <p className="page-subtitle">{alternance.recherche}</p>
       </div>
@@ -36,7 +36,7 @@ export default function Alternance() {
 
       {/* Domaines */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Domaines recherchés</div>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>Domaines recherchés</div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
           {alternance.domaines.map(d => (
             <span key={d} className="card" style={{ padding: "0.7rem 1.4rem", fontWeight: 700, fontSize: "0.9rem", color: "var(--sky)", cursor: "default" }}>{d}</span>
@@ -46,13 +46,13 @@ export default function Alternance() {
 
       {/* Motivation */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>
-        <div className="page-label" style={{ marginBottom: "1rem" }}>// Ma motivation</div>
+        <div className="page-label" style={{ marginBottom: "1rem" }}>Ma motivation</div>
         <div className="card" style={{ borderLeft: "3px solid var(--sky)" }}>
           <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: "0.95rem" }}>{alternance.motivation}</p>
         </div>
       </div>
 
-      {/* Vidéo */}
+      {/* Vidéo *
       <div className="reveal" style={{ marginBottom: "3rem" }}>
         <div className="page-label" style={{ marginBottom: "1rem" }}>// Vidéo de motivation</div>
         <div className="card" style={{ textAlign: "center", padding: "3rem" }}>
@@ -62,7 +62,7 @@ export default function Alternance() {
             ▶ Voir la vidéo
           </a>
         </div>
-      </div>
+      </div>/}
 
       {/* CTA */}
       <div className="reveal" style={{ textAlign: "center" }}>

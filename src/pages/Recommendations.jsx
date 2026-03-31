@@ -13,7 +13,7 @@ export default function Recommendations() {
   return (
     <div className="page" style={{ position: "relative", zIndex: 1 }}>
       <div className="page-header">
-        <div className="page-label">// Témoignages</div>
+        
         <h1 className="page-title">Recommandations</h1>
         <p className="page-subtitle">Ce que disent mes encadrants et professeurs.</p>
       </div>

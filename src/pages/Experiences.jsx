@@ -14,7 +14,7 @@ export default function Experiences() {
   return (
     <div className="page" style={{ position: "relative", zIndex: 1 }}>
       <div className="page-header">
-        <div className="page-label">// Parcours professionnel</div>
+        <div className="page-label">Parcours professionnel</div>
         <h1 className="page-title">Expériences</h1>
         <p className="page-subtitle">Cliquez sur une expérience pour voir le détail complet.</p>
       </div>

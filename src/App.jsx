@@ -10,6 +10,7 @@ import ExperienceDetail from "./pages/ExperienceDetail";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Education from "./pages/Education";
+import Skills from "./pages/Skills";
 import Alternance from "./pages/Alternance";
 import Recommendations from "./pages/Recommendations";
 import Contact from "./pages/Contact";
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/education" element={<Education />} />
+            <Route path="/skills" element={<Skills />} />
             <Route path="/alternance" element={<Alternance />} />
             <Route path="/recommendations" element={<Recommendations />} />
             <Route path="/contact" element={<Contact />} />

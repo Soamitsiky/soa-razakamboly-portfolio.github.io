@@ -295,7 +295,7 @@ export default function Home() {
                   alignItems: "center", justifyContent: "center", fontSize: "1.3rem",
                   background: `${item.color}15`, border: `1px solid ${item.color}30`, flexShrink: 0,
                 }}>{item.icon}</span>
-                <span style={{ fontWeight: 600, fontSize: "0.95rem" }}>{item.label}</span>
+                <span style={{ fontWeight: 600, fontSize: "0.95rem", color: "var(--white)" }}>{item.label}</span>
                 <span style={{ marginLeft: "auto", color: "var(--muted)", fontSize: "1.1rem" }}>→</span>
               </div>
             </Link>
