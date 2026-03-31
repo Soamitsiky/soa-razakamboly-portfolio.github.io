@@ -318,7 +318,7 @@ export default function Home() {
             Travaillons ensemble
           </div>
           <p style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "2rem" }}>
-            Je recherche une alternance à partir de septembre 2026 dans les Hauts-de-France.
+            Je recherche une alternance à partir de septembre 2026.
           </p>
           <Link to="/contact" className="btn btn-primary">Me contacter →</Link>
         </div>

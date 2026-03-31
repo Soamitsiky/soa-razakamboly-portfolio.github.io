@@ -26,7 +26,7 @@ export default function Contact() {
       <div className="page-header">
        
         <h1 className="page-title">Travaillons ensemble</h1>
-        <p className="page-subtitle">Je recherche une alternance à partir de septembre 2026 dans les Hauts-de-France.</p>
+        <p className="page-subtitle">Je recherche une alternance à partir de septembre 2026 .</p>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "3rem", alignItems: "start", flexWrap: "wrap" }} className="reveal">
