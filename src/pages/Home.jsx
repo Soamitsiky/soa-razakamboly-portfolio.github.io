@@ -225,7 +225,7 @@ export default function Home() {
                 background: "var(--bg2)",
               }}>
                 <img
-                  src="https://raw.githubusercontent.com/Soamitsiky/soa-razakamboly-portfolio.github.io/main/src/pages/photosoa.jpg"
+                  src={process.env.PUBLIC_URL + "/photosoa.jpg"}
                   alt="Soa Razakamboly"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
