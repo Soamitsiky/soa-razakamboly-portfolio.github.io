@@ -2,7 +2,7 @@ export const profile = {
   name: "Soa Razakamboly",
   title: "Étudiante en BUT Réseaux & Systèmes",
   subtitle: "Cloud Computing · Administration Systèmes & Réseaux · DevOps",
-  presentation: "Étudiante passionnée par les systèmes, la cybersécurité et le cloud computing, je partage ici mes projets, mes compétences clés et les outils que j'utilise au quotidien.",
+  presentation: "Bienvenue sur mon portfolio, je partage ici mes projets, mes compétences clés et les outils que j'utilise au quotidien.",
   disponibilite: "Alternance dès Septembre 2026",
   email: "mitsikyraza@gmail.com",
   //phone: "07 81 04 52 87",
