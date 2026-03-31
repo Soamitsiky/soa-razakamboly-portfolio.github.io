@@ -16,6 +16,8 @@ import Recommendations from "./pages/Recommendations";
 import Contact from "./pages/Contact";
 import CV from "./pages/CV";
 import "./App.css";
+import Footer from "./components/Footer";
+
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,21 +30,25 @@ export default function App() {
         <ParticlesBg />
         <Navbar />
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/experiences" element={<Experiences />} />
-            <Route path="/experiences/:id" element={<ExperienceDetail />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/education" element={<Education />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/alternance" element={<Alternance />} />
-            <Route path="/recommendations" element={<Recommendations />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cv" element={<CV />} />
-          </Routes>
-        </main>
+          <Footer />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/experiences" element={<Experiences />} />
+              <Route path="/experiences/:id" element={<ExperienceDetail />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/alternance" element={<Alternance />} />
+              <Route path="/recommendations" element={<Recommendations />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/cv" element={<CV />} />
+            </Routes>
+          <Footer /> 
+        </main> 
       </div>
     </Router>
   );
