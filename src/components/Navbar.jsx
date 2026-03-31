@@ -43,17 +43,14 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid rgba(56,189,248,0.1)" : "none",
         transition: "background 0.4s, backdrop-filter 0.4s, border-color 0.4s",
         display: "flex", alignItems: "center",
+        justifyContent: "space-between",  // ✅ AJOUTE CETTE LIGNE
         padding: "0 5vw",
       }}>
         {/* Logo */}
-        <Link to="/" style={{
-          fontFamily: "var(--mono)", fontWeight: 700, fontSize: "1rem",
-          color: "var(--sky)", textDecoration: "none", marginRight: "auto",
-          letterSpacing: "0.05em",
-        }}>
-          soa<span style={{ color: "var(--lilac)" }}>.</span>dev
-        </Link>
-
+       <span className="logo">
+      Soa R<span className="cursor">_</span>
+    </span>
+  
         {/* Desktop links */}
         <div style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
           className="desktop-nav">
@@ -90,7 +87,7 @@ export default function Navbar() {
             flexDirection: "column", gap: 5,
             background: "none", border: "none",
             cursor: "none", padding: "8px",
-            marginLeft: "auto",
+            
           }}
           aria-label="Menu"
         >

@@ -171,6 +171,13 @@ main { padding-top: 64px; }
   opacity: 0.3;
 }
 
+.logo {
+  background: linear-gradient(90deg, #38bdf8, #b8b8b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Glow text */
 .glow-text {
   text-shadow: 0 0 30px rgba(56,189,248,0.6), 0 0 60px rgba(56,189,248,0.3);
