@@ -29,7 +29,7 @@ export default function Contact() {
         <p className="page-subtitle">Je recherche une alternance à partir de septembre 2026 .</p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "3rem", alignItems: "start", flexWrap: "wrap" }} className="reveal">
+      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }} className="reveal">
 
         {/* Infos contact */}
         <div>
@@ -100,15 +100,7 @@ export default function Contact() {
                   onFocus={e => e.target.style.borderColor = "var(--sky)"}
                   onBlur={e => e.target.style.borderColor = "rgba(56,189,248,0.2)"}
                 />
-                <p style={{
-  textAlign: "center",
-  marginTop: "3rem",
-  fontSize: "0.75rem",
-  color: "rgba(100, 116, 139, 0.5)", // très discret
-  letterSpacing: "0.05em",
-}}>
-  Ce portfolio a été conçu et développé par Soa Razakamboly
-</p>
+                
               </div>
               <button onClick={handleSubmit} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
                 Envoyer →

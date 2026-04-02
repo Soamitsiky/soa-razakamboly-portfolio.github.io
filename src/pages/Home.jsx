@@ -130,8 +130,10 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <section style={{
-        minHeight: "60vh", display: "flex", alignItems: "felx-start", flexDirection: "column", justifyContent: "center",
-        padding: "0 8vw",  paddingBottom: "6rem", position: "relative", overflow: "hidden",
+          minHeight: "100vh", display: "flex", alignItems: "center",
+          padding: "80px 5vw 4rem", gap: "2rem", flexWrap: "wrap",
+          flexDirection: "column",
+        
       }}>
         {/* Ambient glow blobs */}
         <div style={{
@@ -208,10 +210,8 @@ export default function Home() {
           </div>
 
           {/* Photo */}
-          <div className="fade-in" style={{
-            position: "relative",
-            animation: "float 5s ease-in-out infinite",
-          }}>
+          <div style={{ flexShrink: 0, animation: "fadeUp .8s .4s both", display: "none" }}>
+            
             <div style={{
               width: 260, height: 260,
               borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",

@@ -45,7 +45,8 @@ main { padding-top: 64px; }
 
 /* Page layout */
 .page { min-height: calc(100vh - 64px); padding: 5rem 8vw; }
-.page-header { margin-bottom: 3.5rem; }
+.page-header { width: 100%; max-width: 900px; }
+
 .page-label {
   font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
   color: var(--sky); letter-spacing: 0.2em; text-transform: uppercase;
