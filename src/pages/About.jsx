@@ -229,27 +229,53 @@ export default function About() {
         </div>
 
         {/* Colonne droite */}
-        <div className="ab-hero-right">
-          <div className="ab-photo-wrapper">
-            <img src="/photosoa.jpg" alt="Soa Razakamboly" className="ab-photo" />
-          </div>
-          <div className="ab-info-card">
-            <p className="ab-label">Infos clés</p>
-            {[
-              { k: "Formation", v: "BUT 3 ème année Réseaux & Systèmes" },
-              { k: "École", v: "IUT A Villeneuve-d'Ascq" },
-              { k: "Entreprise", v: "Alternante - Anywr Group" },
-              ,
-            ].map(({ k, v }) => (
-              <div className="ab-info-row" key={k}>
-                <span className="ab-info-key">{k}</span>
-                <span className="ab-info-val">{v}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+        <div style={{ position: "relative", display: "inline-block" }}>
 
+  {/* Ton cadre photo existant — inchangé sauf width/height */}
+  <div style={{
+    width: 320,
+    height: 320,
+    borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
+    background: "var(--grad)",
+    padding: 3,
+  }}>
+    <div style={{ width: "100%", height: "100%", borderRadius: "inherit", overflow: "hidden" }}>
+      <img src={process.env.PUBLIC_URL + "/photosoa.jpg"} alt="Soa"
+        style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+    </div>
+  </div>
+
+  {/* Badge LinkedIn-style — positionné sur la photo */}
+  <div style={{
+    position: "absolute",
+    bottom: 16,
+    left: "50%",
+    transform: "translateX(-50%)",
+    background: "rgba(4,12,24,0.88)",
+    border: "1px solid rgba(52,211,153,0.5)",
+    borderRadius: 999,
+    padding: "0.35rem 1rem",
+    fontSize: "0.72rem",
+    fontFamily: "var(--mono)",
+    color: "var(--green)",
+    display: "flex",
+    alignItems: "center",
+    gap: 6,
+    whiteSpace: "nowrap",
+    backdropFilter: "blur(8px)",
+  }}>
+    <span style={{
+      width: 7, height: 7, borderRadius: "50%",
+      background: "var(--green)",
+      animation: "pulse 1.5s ease-in-out infinite",
+      display: "inline-block",
+      flexShrink: 0,
+    }} />
+    Recherche alternance
+  </div>
+
+</div>
+</div>
       {/* ══ SOFT SKILLS — CAROUSEL ══ */}
       <div className="ab-section ab-reveal">
         <p className="ab-label">Comment je travaille</p>

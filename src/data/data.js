@@ -249,7 +249,7 @@ export const education = [
     school: "IUT A Villeneuve-d'Ascq",
     year: "2025 – 2026",
     icon: "🎓",
-    color: "#38BDF8",
+    color: "#f8bb38",
   },
   {
     degree: "DEUST Infrastructures Numériques",

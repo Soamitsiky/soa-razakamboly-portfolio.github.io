@@ -19,20 +19,7 @@ export default function Alternance() {
         
       </div>
 
-      {/* Infos clés */}
-      <div className="grid-3 reveal" style={{ marginBottom: "3rem" }}>
-        {[
-          { icon: "📅", label: "Disponibilité", value: alternance.disponibilite },
-          { icon: "🔄", label: "Rythme", value: alternance.rythme },
-          { icon: "📍", label: "Mobilité", value: alternance.mobilite },
-        ].map(item => (
-          <div key={item.label} className="card" style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{item.icon}</div>
-            <div style={{ color: "var(--muted)", fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.3rem" }}>{item.label}</div>
-            <div style={{ fontWeight: 700, fontSize: "1rem", color: "var(--sky)" }}>{item.value}</div>
-          </div>
-        ))}
-      </div>
+      
 
       {/* Domaines */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>
