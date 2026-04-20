@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { experiences } from "../data/data";
 import { useEffect } from "react";
 
 export default function Experiences() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -32,7 +34,12 @@ export default function Experiences() {
       {/* Grille de flip cards */}
       <div className="flip-grid">
         {experiences.map((exp) => (
-          <div className="flip-card-wrapper" key={exp.id}>
+          <div
+            className="flip-card-wrapper"
+            key={exp.id}
+            onClick={() => navigate(`/experiences/${exp.id}`)}
+            style={{ cursor: "pointer" }}
+          >
             <div className="flip-card">
 
               {/* FACE AVANT */}
@@ -65,9 +72,21 @@ export default function Experiences() {
                     </span>
                   ))}
                 </div>
-                <Link to={`/experiences/${exp.id}`} className="flip-link" style={{ color: exp.color, borderColor: `${exp.color}50` }}>
-                  Voir le détail complet →
-                </Link>
+                {/* Indicateur visuel — plus besoin d'un vrai Link */}
+                <div style={{
+                  marginTop: "auto",
+                  flexShrink: 0,
+                  color: exp.color,
+                  border: `1px solid ${exp.color}50`,
+                  borderRadius: 999,
+                  padding: "0.5rem 1.2rem",
+                  fontSize: "0.82rem",
+                  fontWeight: 600,
+                  textAlign: "center",
+                  background: `${exp.color}10`,
+                }}>
+                  Voir le détail
+                </div>
               </div>
 
             </div>
