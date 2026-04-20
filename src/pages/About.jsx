@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 const phrases = [
   { text: "Une vraie curiosité technique," },
   { text: "le goût du défi," },
-  { text: "et une satisfaction profonde à aider les gens." },
+  { text: "et une envie naturelle d'aider les gens." },
 ];
 
 const softSkills = [
@@ -51,9 +51,10 @@ const langues = [
 ];
 
 const hobbies = [
-  { emoji: "🏊", label: "Natation" },
+  { emoji: "🏊", label: "Natation pro" },
   { emoji: "🎨", label: "Dessin & Peinture" },
   { emoji: "🎸", label: "Guitare" },
+  { emoji: "🎲", label: "Sudoku" },
 ];
 
 /* ══ CAROUSEL ══ */
@@ -199,8 +200,11 @@ export default function About() {
           <p className="ab-hero-intro">
             Je suis <strong>Soa</strong>, étudiante en BUT 3ème année Réseaux &
             Systèmes à l'IUT de Villeneuve-d'Ascq, en alternance chez{" "}
-            <strong>Anywr Group</strong>. Ce qui me définit professionnellement ?
-          </p>
+            <strong>Anywr Group</strong>.</p>
+
+            <p className="ab-hero-intro"style={{ marginTop: "1.5rem" }}></p>
+             Ce qui me définit professionnellement ?
+            
 
           <div className="ab-story">
             {phrases.map((p, i) => (
@@ -224,48 +228,26 @@ export default function About() {
           </div>
         </div>
 
-        {/* Colonne droite — Carte holographique */}
-<div className="ab-hero-right">
-  <div className="ab-holo-card" onMouseMove={(e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 30;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -30;
-    card.style.transform = `perspective(600px) rotateY(${x}deg) rotateX(${y}deg)`;
-    card.style.setProperty("--mx", `${((e.clientX - rect.left) / rect.width) * 100}%`);
-    card.style.setProperty("--my", `${((e.clientY - rect.top) / rect.height) * 100}%`);
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = "perspective(600px) rotateY(0deg) rotateX(0deg)";
-  }}>
-
-    {/* Reflet holographique */}
-    <div className="ab-holo-glare" />
-
-    {/* Photo */}
-    <div className="ab-holo-photo-ring">
-      <img src="/soa.jpg" alt="Soa" className="ab-holo-photo" />
-    </div>
-
-    {/* Nom */}
-    <div className="ab-holo-name">Soa Razakamboly</div>
-    <div className="ab-holo-role">Administratrice Systèmes & Réseaux</div>
-
-    {/* Tags flottants */}
-    <div className="ab-holo-tags">
-      {["☁️ Cloud", "🔐 Cybersécurité", "🐳 DevOps", "🌐 Réseaux"].map((tag) => (
-        <span key={tag} className="ab-holo-tag">{tag}</span>
-      ))}
-    </div>
-
-    {/* Barre de statut */}
-    <div className="ab-holo-status">
-      <span className="ab-holo-dot" />
-      <span>Disponible — Sept. 2026</span>
-    </div>
-
-  </div>
-</div>
+        {/* Colonne droite */}
+        <div className="ab-hero-right">
+          <div className="ab-photo-wrapper">
+            <img src="/photosoa.jpg" alt="Soa Razakamboly" className="ab-photo" />
+          </div>
+          <div className="ab-info-card">
+            <p className="ab-label">Infos clés</p>
+            {[
+              { k: "Formation", v: "BUT 3 ème année Réseaux & Systèmes" },
+              { k: "École", v: "IUT A Villeneuve-d'Ascq" },
+              { k: "Entreprise", v: "Alternante - Anywr Group" },
+              ,
+            ].map(({ k, v }) => (
+              <div className="ab-info-row" key={k}>
+                <span className="ab-info-key">{k}</span>
+                <span className="ab-info-val">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* ══ SOFT SKILLS — CAROUSEL ══ */}

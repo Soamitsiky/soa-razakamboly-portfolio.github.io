@@ -65,7 +65,15 @@ export default function ProjectDetail() {
           <p style={{ color: "var(--muted)", lineHeight: 1.85, fontSize: "0.95rem" }}>
             {p.description}
           </p>
-          
+          {p.myRole && (
+            <p style={{
+              color: "var(--muted)", lineHeight: 1.8, fontSize: "0.9rem",
+              marginTop: "1.2rem", borderLeft: `3px solid ${p.color}`,
+              paddingLeft: "1rem"
+            }}>
+              <strong style={{ color: p.color }}>Mon rôle — </strong>{p.myRole}
+            </p>
+          )}
         </div>
 
         {/* Image */}

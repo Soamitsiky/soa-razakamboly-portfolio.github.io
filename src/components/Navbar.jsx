@@ -82,6 +82,8 @@ export default function Navbar() {
           })}
         </div>
 
+        
+
         {/* Hamburger */}
         <button
           onClick={() => setMenuOpen(v => !v)}

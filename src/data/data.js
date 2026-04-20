@@ -23,7 +23,7 @@ export const skills = [
   {
     category: "Cloud & Infrastructure",
     icon: "☁️",
-    color: "#38BDF8",
+    color: "#38f2f8",
     items: ["Microsoft 365", "Defender", "Exchange", "Intune", "SharePoint", "Entra ID", "PureView", "Microsoft Azure", "Google Cloud"],
   },
   {
@@ -52,7 +52,7 @@ export const skills = [
   },
    {
     category: "Méthodes de travail",
-    color: "#34D399",
+    color: "#ecf024",
     icon: "⚙️",
     items: ["ITIL", "Agile", "Scrum"],
   },
@@ -65,7 +65,7 @@ export const experiences = [
     company: "Anywr Group",
     period: "Sept 2025 – Août 2026",
     type: "Alternance",
-    color: "#38BDF8",
+    color: "#e7dc3d",
     summary: "Administration du cloud Microsoft 365, automatisation et infrastructure réseau.",
     missions: [
       {
@@ -103,7 +103,7 @@ export const experiences = [
         ],
       },
     ],
-    technologies: ["Microsoft Azure", "Microsoft 365 administration", "Exchange", "Defender", "Intune", "SharePoint", "PowerShell", "Jira", "Confluence", "Hyper-V", "Snipe-IT"],
+    technologies: ["Microsoft Azure", "Microsoft 365 administration", "Exchange", "Defender", "Intune", "PowerShell", "Jira", "Confluence"],
   },
   {
     id: "anywr-stage",
@@ -227,6 +227,20 @@ export const projects = [
       "Administration": ["Active Directory", "LDAP"],
     },
   },
+  {
+  id: 4,
+  title: "Portfolio Personnel",
+  subtitle: "REACT · GITHUB PAGES",
+  summary: "Conception et développement de mon portfolio en React.js, déployé sur GitHub Pages.",
+  emoji: "💼",
+  color: "#ecee69",        // violet — pour se démarquer des 3 autres
+  status: "En cours",
+  stack: {
+    frontend: ["React.js", "CSS3", "React Router"],
+    outils:   ["GitHub Pages", "EmailJS", "Git"],
+  },
+  demo: "https://soamitsiky.github.io/soa-razakamboly-portfolio.github.io/",
+},
 ];
 
 export const education = [
@@ -257,7 +271,7 @@ export const education = [
 
 export const recommendations = [
   {
-    name: "Zied Omrani",
+    name: "Zied O.",
     role: "Administrateur Cloud",
     company: "Anywr Group",
     date: "06/03/2026",
@@ -267,7 +281,7 @@ export const recommendations = [
     color: "#38BDF8",
   },
   {
-    name: "Francisco De La Peña",
+    name: "Francisco DLP.",
     role: "Maître de conférences",
     company: "Université de Lille",
     date: "11/02/2025",
@@ -277,7 +291,7 @@ export const recommendations = [
     color: "#818CF8",
   },
   {
-    name: "Gaétan Tirmont",
+    name: "Gaétan T.",
     role: "Enseignant en Réseaux & Administrateur Systèmes",
     company: "Université de Lille",
     date: "14/02/2025",
@@ -287,8 +301,8 @@ export const recommendations = [
     color: "#34D399",
   },
   {
-    name: "Stéphane Bailleux",
-    role: "Responsable de formation DEUST",
+    name: "Stéphane B.",
+    role: "Responsable de formation DEUST IN",
     company: "Université de Lille",
     date: "02/06/2025",
     email: "",
@@ -305,5 +319,6 @@ export const alternance = {
   mobilite: "France",
   domaines: ["Cloud Computing", "Administration Systèmes & Réseaux", "Cybersécurité", "Télécommunication", "DevOps"],
   videoMotivation: "https://youtu.be/-W6us3iee7E?si=h2FvmYlc-jvXStpR",
-  motivation: "Passionnée par les infrastructures cloud et la cybersécurité, je souhaite approfondir mes compétences dans un environnement professionnel stimulant. Mon expérience chez Anywr Group m'a permis de développer une solide maîtrise des outils Microsoft 365, de l'automatisation PowerShell et de l'administration réseau. Je suis prête à m'investir pleinement dans une nouvelle alternance pour continuer à progresser.",
+  motivation: "Je souhaite approfondir mes compétences dans un environnement professionnel stimulant. Mon expérience chez Anywr Group m'a permis de développer une solide maîtrise des outils Microsoft 365, de l'automatisation PowerShell et de l'administration réseau. Je suis prête à m'investir pleinement dans une nouvelle alternance pour continuer à progresser.",
+  
 };

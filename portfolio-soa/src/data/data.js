@@ -103,7 +103,7 @@ export const experiences = [
         ],
       },
     ],
-    technologies: ["Microsoft Azure", "Microsoft 365", "Exchange", "Defender", "Intune", "SharePoint", "PowerShell", "Jira", "Confluence", "Hyper-V", "Snipe-IT"],
+    technologies: ["Microsoft Azure", "Microsoft 365", "Exchange", "Defender", "Intune", "SharePoint", "PowerShell", "Jira", "Confluence", "Snipe-IT"],
   },
   {
     id: "anywr-stage",
@@ -171,7 +171,7 @@ export const projects = [
     status: "Terminé",
     demo: "https://kodo.startupweek.fr",
     summary: "Application web de type swipe appliquée à l'apprentissage du code.",
-    description: "Projet réalisé en équipe durant la Startup Week de l'IUT de Lille Nord de France. KodoLike est une application web de type \"swipe\" appliquée à l'apprentissage du code, permettant aux étudiants de s'entraîner sur des snippets de code de manière ludique et interactive.",
+    description: "Projet réalisé en équipe durant la Startup Week de l'IUT de Lille. KodoLike est une application web de type \"swipe\" appliquée à l'apprentissage du code, permettant aux étudiants de s'entraîner sur des snippets de code de manière ludique et interactive.",
     myRole: "J'ai assuré la liaison entre les développeurs front/back et l'infrastructure, en garantissant que chaque push sur la branche main déclenche automatiquement le déploiement en production.",
     methodology: "Agile Scrum — Sprint planning quotidien, revue de sprint, rétrospective, branches GitLab et merge requests.",
     devopsDetails: [
@@ -287,7 +287,7 @@ export const recommendations = [
   },
   {
     name: "Stéphane Bailleux",
-    role: "Responsable de formation DEUST",
+    role: "Responsable de formation DEUST IN",
     company: "Université de Lille",
     date: "02/06/2025",
     email: "",

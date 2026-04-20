@@ -21,6 +21,7 @@ import "./App.css";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
+  const [isLight, setIsLight] = useState(false);
   useEffect(() => { setTimeout(() => setLoaded(true), 100); }, []);
 
   return (

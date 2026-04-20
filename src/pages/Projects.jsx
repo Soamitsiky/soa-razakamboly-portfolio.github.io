@@ -82,13 +82,15 @@ export default function Projects() {
                 )}
                 
                 <div className="pj-back-links">
-                  <Link
-                    to={`/projects/${proj.id}`}
-                    className="pj-link"
-                    style={{ color: proj.color, borderColor: `${proj.color}50` }}
-                  >
-                    Voir le détail →
-                  </Link>
+                  {proj.id !== 4 && (
+                    <Link
+                      to={`/projects/${proj.id}`}
+                      className="pj-link"
+                      style={{ color: proj.color, borderColor: `${proj.color}50` }}
+                    >
+                      Voir le détail →
+                    </Link>
+                  )}
                   {proj.demo && (
                     <a
                       href={proj.demo}

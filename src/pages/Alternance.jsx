@@ -16,7 +16,7 @@ export default function Alternance() {
       <div className="page-header">
         
         <h1 className="page-title">Recherche d'alternance</h1>
-        <p className="page-subtitle">{alternance.recherche}</p>
+        
       </div>
 
       {/* Infos clés */}
@@ -48,7 +48,7 @@ export default function Alternance() {
       <div className="reveal" style={{ marginBottom: "3rem" }}>
         <div className="page-label" style={{ marginBottom: "1rem" }}>Ma motivation</div>
         <div className="card" style={{ borderLeft: "3px solid var(--sky)" }}>
-          <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: "0.95rem" }}>{alternance.motivation}</p>
+         <p style={{ color: "#cbd5e1", opacity: 1 }}>{alternance.motivation}</p>
         </div>
       </div>
 

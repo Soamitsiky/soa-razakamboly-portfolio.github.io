@@ -66,7 +66,7 @@ export default function Contact() {
           style={{
             padding: "0.75rem 1.5rem",
             border: "2px solid #00c6ff",
-            color: "#00c6ff",
+            color: "#82c5d8",
             borderRadius: "999px",
             fontWeight: "600",
             textDecoration: "none",
@@ -210,7 +210,7 @@ export default function Contact() {
               disabled={loading}
               style={{
                 padding: "0.875rem 2rem",
-                background: loading ? "rgba(0,188,212,0.4)" : "#00bcd4",
+                background: loading ? "rgba(0,188,212,0.4)" : "#8641d4",
                 border: "none",
                 borderRadius: "8px",
                 color: "#fff",
@@ -237,10 +237,15 @@ export default function Contact() {
     lineHeight: "1.7",
   }}
 >
-  <p>© 2026 Soa Razakamboly — Tous droits réservés</p>
+  <p>
+  © 2026{" "}
+  <span style={{ color: "var(--sky)" }}>Soa Razakamboly</span>
+  {" "}—{" "}
+  <span style={{ color: "var(--lilac)" }}>Tous droits réservés</span>
+</p>
 
   <details style={{ marginTop: "0.4rem" }}>
-    <summary style={{ cursor: "pointer", opacity: 0.6 }}>
+    <summary style={{ cursor: "pointer", opacity: 0.8 }}>
       Mentions légales
     </summary>
 

@@ -15,14 +15,14 @@ export default function Recommendations() {
       <div className="page-header">
         
         <h1 className="page-title">Recommandations</h1>
-        <p className="page-subtitle">Ce que disent mes encadrants et professeurs.</p>
+        <p className="page-subtitle" style={{ color: "#cbd5e1" }}>Ce que disent mes encadrants et professeurs.</p>
       </div>
 
       <div className="grid-2 reveal">
         {recommendations.map((r, i) => (
           <div key={i} className="card" style={{ borderTop: `3px solid ${r.color}` }}>
             <div style={{ fontSize: "2rem", marginBottom: "1rem", opacity: 0.4 }}>"</div>
-            <p style={{ color: "var(--muted)", lineHeight: 1.85, fontSize: "0.9rem", marginBottom: "1.5rem", fontStyle: "italic" }}>
+            <p style={{ color: "#cbd5e1", lineHeight: 1.85, fontSize: "0.9rem", marginBottom: "1.5rem", fontStyle: "italic" }}>
               {r.text}
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
@@ -34,7 +34,7 @@ export default function Recommendations() {
               }}>{r.initials}</div>
               <div>
                 <div style={{ fontWeight: 700, fontSize: "0.95rem" }}>{r.name}</div>
-                <div style={{ color: "var(--muted)", fontSize: "0.78rem" }}>{r.role}</div>
+                <div style={{ color: "#6f7277", fontSize: "0.78rem" }}>{r.role}</div>
                 <div style={{ color: r.color, fontSize: "0.75rem" }}>{r.company}</div>
               </div>
               <div style={{ marginLeft: "auto", fontFamily: "var(--mono)", fontSize: "0.7rem", color: "var(--muted)" }}>{r.date}</div>

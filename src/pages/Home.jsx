@@ -130,7 +130,7 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <section style={{
-          minHeight: "100vh", display: "flex", alignItems: "center",
+          minHeight: "autos", display: "flex", alignItems: "center",
           padding: "80px 5vw 4rem", gap: "2rem", flexWrap: "wrap",
           flexDirection: "column",
         
@@ -151,7 +151,7 @@ export default function Home() {
 
         <div style={{
           display: "grid", gridTemplateColumns: "1fr auto",
-          gap: "4rem", alignItems: "center", width: "100%", maxWidth: 1200,flex: 1, 
+          gap: "4rem", alignItems: "center", width: "100%", maxWidth: "1200px",
         }}>
           {/* Left */}
           <div>
@@ -187,11 +187,11 @@ export default function Home() {
               fontSize: "clamp(1rem, 2.5vw, 1.3rem)", fontWeight: 600,
               marginBottom: "1.25rem", color: "var(--white)", minHeight: "2em",
             }}>
-              <TypedText words={["Cloud Computing", "Administration Réseaux", "DevOps", "Cybersécurité"]} />
+              <TypedText words={["Étudiante en ...","Cloud Computing", "Administration Réseaux", "DevOps", "Cybersécurité"]} />
             </div>
 
             <p className="fade-in" style={{
-              color: "var(--muted)", fontSize: "1rem", lineHeight: 1.8,
+              color: "var(--white)", fontSize: "1rem", lineHeight: 1.8,
               maxWidth: 520, marginBottom: "2rem",
             }}>
               {profile.presentation}
@@ -204,10 +204,25 @@ export default function Home() {
             </div>
 
             <div className="fade-in" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <Link to="/cv" className="btn btn-primary">Voir mon CV →</Link>
-              <Link to="/contact" className="btn btn-outline">Me contacter</Link>
-            </div>
-          </div>
+  <Link to="/cv" className="btn btn-primary">Voir mon CV </Link>
+  
+  <a
+    href="https://www.linkedin.com/in/soa-razakamboly-7016b0327"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      padding: "0.75rem 1.5rem",
+      background: "linear-gradient(135deg, #00c6ff, #0072ff)",
+      color: "#fff",
+      borderRadius: "999px",
+      fontWeight: "600",
+      textDecoration: "none",
+    }}
+  >
+    LinkedIn
+  </a>
+</div>
+</div>  {/* ← ferme le bloc Left */}
 
           {/* Photo */}
           <div style={{ flexShrink: 0, animation: "fadeUp .8s .4s both", display: "none" }}>
@@ -317,7 +332,7 @@ export default function Home() {
           }}>
             Travaillons ensemble
           </div>
-          <p style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "2rem" }}>
+          <p style={{ color: "var(--white)", lineHeight: 1.8, marginBottom: "2rem" }}>
             Je recherche une alternance à partir de septembre 2026.
           </p>
           <Link to="/contact" className="btn btn-primary">Me contacter →</Link>
