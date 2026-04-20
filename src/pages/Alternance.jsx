@@ -19,7 +19,43 @@ export default function Alternance() {
         
       </div>
 
-      
+      {/* Formation recherchée */}
+<div className="reveal" style={{ marginBottom: "3rem" }}>
+  <div className="page-label" style={{ marginBottom: "1rem" }}>Formation recherchée</div>
+  <div className="card" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+    <span style={{
+      fontSize: "1.8rem", flexShrink: 0,
+    }}>🎓</span>
+    <div>
+      <div style={{ fontWeight: 700, color: "var(--white)", fontSize: "1rem", marginBottom: "0.25rem" }}>
+        École d'ingénieurs ou Master
+      </div>
+      <div style={{ color: "#94a3b8", fontSize: "0.85rem" }}>
+        Dans toute la France
+      </div>
+    </div>
+    <span style={{
+      marginLeft: "auto",
+      background: "rgba(52,211,153,0.1)",
+      border: "1px solid rgba(52,211,153,0.3)",
+      borderRadius: 999,
+      padding: "0.3rem 0.9rem",
+      fontSize: "0.72rem",
+      fontFamily: "var(--mono)",
+      color: "var(--green)",
+      whiteSpace: "nowrap",
+      display: "flex", alignItems: "center", gap: 6,
+    }}>
+      <span style={{
+        width: 6, height: 6, borderRadius: "50%",
+        background: "var(--green)",
+        animation: "pulse 1.5s ease-in-out infinite",
+        display: "inline-block",
+      }} />
+      En recherche
+    </span>
+  </div>
+</div>
 
       {/* Domaines */}
       <div className="reveal" style={{ marginBottom: "3rem" }}>

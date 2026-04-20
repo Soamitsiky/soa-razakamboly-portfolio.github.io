@@ -222,10 +222,7 @@ export default function About() {
             à progresser et apporter une vraie valeur à l'équipe.
           </p>
 
-          <div className="ab-dispo">
-            <span className="ab-dispo-dot" />
-            Disponible en alternance — Septembre 2026
-          </div>
+         
         </div>
 
         {/* Colonne droite */}
@@ -271,7 +268,7 @@ export default function About() {
       display: "inline-block",
       flexShrink: 0,
     }} />
-    Recherche alternance
+    Recherche alternance - sept 2026
   </div>
 
 </div>
