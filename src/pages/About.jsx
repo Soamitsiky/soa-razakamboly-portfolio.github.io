@@ -25,21 +25,21 @@ const softSkills = [
     icon: "💬",
     title: "Communication adaptée",
     color: "#FBBF24",
-    situation: "Alternance Anywr — docs & réunions internationales",
+    situation: "Docs & réunions internationales",
     text: "J'ai rédigé des documentations techniques pour des non-techniciens et participé à des réunions en anglais — j'ai appris à adapter mon discours selon l'interlocuteur.",
   },
   {
     icon: "💡",
     title: "Initiative & exécution",
     color: "#34D399",
-    situation: "Projet KodoLike — Startup Week IUT Lille",
+    situation: "Projet KodoLike",
     text: "Sur KodoLike, j'ai pris l'initiative de coordonner les équipes front, back et infra — un rôle informel mais essentiel. Je propose, j'organise, et j'exécute.",
   },
   {
     icon: "🔄",
     title: "Adaptabilité",
     color: "#F472B6",
-    situation: "Environnements variés : support, cloud, DevOps",
+    situation: "Environnements variés",
     text: "D'un ticket support à la configuration Azure, en passant par Docker et PowerShell, j'adapte rapidement ma posture selon le contexte et les interlocuteurs.",
   },
 ];
@@ -113,16 +113,9 @@ function Carousel({ skills }) {
 
           <p className="carousel-text">{s.text}</p>
 
-          <div className="carousel-bar-bg">
-            <div className="carousel-bar" style={{ background: s.color }} />
-          </div>
-          <div className="carousel-bar-label" style={{ color: s.color }}>
-            Niveau acquis — 85%
-          </div>
-
-          <div className="carousel-counter" style={{ color: s.color }}>
-            {current + 1} / {skills.length}
-          </div>
+          
+          
+          
         </div>
 
         <button className="carousel-arrow" onClick={next}>›</button>
@@ -140,20 +133,7 @@ function Carousel({ skills }) {
         ))}
       </div>
 
-      {/* Preview */}
-      <div className="carousel-preview">
-        {skills.map((sk, i) => (
-          <button
-            key={i}
-            className={`carousel-preview-item ${i === current ? "carousel-preview-active" : ""}`}
-            style={i === current ? { borderColor: sk.color, color: sk.color } : {}}
-            onClick={() => goTo(i, i > current ? "next" : "prev")}
-          >
-            <span>{sk.icon}</span>
-            <span>{sk.title}</span>
-          </button>
-        ))}
-      </div>
+      
 
     </div>
   );
@@ -192,7 +172,7 @@ export default function About() {
       <div className="ab-hero">
 
         <div className="ab-hero-left">
-          <p className="ab-label">À propos</p>
+          
           <h1 className="ab-hero-title">
             Qui suis-je <span className="ab-accent">?</span>
           </h1>
@@ -215,12 +195,7 @@ export default function About() {
             ))}
           </div>
 
-          <p className="ab-hero-text" style={{ marginTop: "1.5rem" }}>
-            Je cherche une alternance en{" "}
-            <strong style={{ color: "#38BDF8" }}>septembre 2026</strong> dans un
-            environnement cloud, cybersécurité ou DevOps où je pourrai continuer
-            à progresser et apporter une vraie valeur à l'équipe.
-          </p>
+          
 
          
         </div>
@@ -275,8 +250,8 @@ export default function About() {
 </div>
       {/* ══ SOFT SKILLS — CAROUSEL ══ */}
       <div className="ab-section ab-reveal">
-        <p className="ab-label">Comment je travaille</p>
-        <h2 className="ab-section-title">Compétences comportementales</h2>
+        
+        <h2 className="ab-section-title"> Mes Soft skills</h2>
         <Carousel skills={softSkills} />
       </div>
 
@@ -290,9 +265,7 @@ export default function About() {
                 <span className="ab-lang-name">{l.lang}</span>
                 <span className="ab-lang-level" style={{ color: l.color }}>{l.level}</span>
               </div>
-              <div className="ab-lang-bar-bg">
-                <div className="ab-lang-bar" style={{ background: l.color, width: `${l.pct}%` }} />
-              </div>
+              
             </div>
           ))}
         </div>

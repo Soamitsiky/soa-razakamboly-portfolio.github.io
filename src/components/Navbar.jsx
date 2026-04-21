@@ -8,9 +8,10 @@ const links = [
   { path: "/projects", label: "Projets", color: "#34D399" },
   { path: "/skills", label: "Compétences", color: "#FB923C" },
   { path: "/education", label: "Formation", color: "#F472B6" },
-  { path: "/alternance", label: "Alternance", color: "#8B5CF6" },
   { path: "/recommendations", label: "Recs", color: "#10B981" },
-  { path: "/cv", label: "CV", color: "#38BDF8" },
+  { path: "/alternance", label: "Alternance", color: "#8B5CF6" },
+  
+  
   { path: "/contact", label: "Contact", color: "#EC4899" },
 ];
 

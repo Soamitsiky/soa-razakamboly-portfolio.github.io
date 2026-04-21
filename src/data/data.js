@@ -185,25 +185,8 @@ export const projects = [
       "Authentification OAuth GitLab et GitHub côté infrastructure",
     ],
     stack: {
-      "Front-end": ["React 19", "TypeScript", "Vite", "TailwindCSS", "Shadcn/ui", "Framer Motion"],
-      "Back-end": ["Spring Boot 4", "Java 21", "Spring Security", "JWT", "JPA/Hibernate"],
-      "Base de données": ["PostgreSQL 16"],
       "Infrastructure": ["Docker", "Docker Compose", "Nginx", "GitLab CI/CD", "VPS OVH Debian", "Let's Encrypt"],
     },
-  },
-  {
-    id: "vps-portfolio",
-    title: "VPS Hébergeur de Portfolio",
-    subtitle: "Projet personnel",
-    emoji: "🖥️",
-    color: "#818CF8",
-    status: "En cours",
-    demo: null,
-    summary: "Création d'un VPS personnel pour héberger son portfolio.",
-    description: "Projet personnel visant à créer et configurer un VPS dédié à l'hébergement de portfolio. Configuration de l'infrastructure, sécurisation et automatisation du déploiement.",
-    myRole: "Conception, configuration et administration complète du serveur.",
-    devopsDetails: [],
-    stack: {},
   },
   {
     id: "infra-anywr",
@@ -227,6 +210,23 @@ export const projects = [
       "Administration": ["Active Directory", "LDAP"],
     },
   },
+  {
+    id: "vps-portfolio",
+    title: "VPS Hébergeur de Portfolio",
+    subtitle: "Projet personnel",
+    emoji: "🖥️",
+    color: "#818CF8",
+    status: "En cours",
+    demo: null,
+    summary: "Création d'un VPS personnel pour héberger son portfolio.",
+    description: "Projet personnel visant à créer et configurer un VPS dédié à l'hébergement de portfolio. Configuration de l'infrastructure, sécurisation et automatisation du déploiement.",
+    myRole: "Conception, configuration et administration complète du serveur.",
+    devopsDetails: [],
+    stack: {
+      "Hyperviseur": ["Vagrant","Nginx","Docker","CI/CD gitlab"]
+    },
+  },
+  
   {
   id: 4,
   title: "Portfolio Personnel",

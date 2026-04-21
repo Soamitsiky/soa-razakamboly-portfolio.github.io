@@ -14,9 +14,7 @@ export default function Projects() {
 
   return (
     <div style={{ minHeight: "100vh", padding: "6rem 2rem 4rem", maxWidth: "1100px", margin: "0 auto" }}>
-      <p style={{ color: "var(--sky)", fontFamily: "var(--mono)", fontSize: "0.8rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-        Réalisations
-      </p>
+      
       <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "var(--sky)", marginBottom: "0.75rem" }}>
         Projets
       </h1>
@@ -82,13 +80,13 @@ export default function Projects() {
                 )}
                 
                 <div className="pj-back-links">
-                  {proj.id !== 4 && (
+                  {proj.id !== 4 && proj.id !== "vps-portfolio" && (
                     <Link
                       to={`/projects/${proj.id}`}
                       className="pj-link"
                       style={{ color: proj.color, borderColor: `${proj.color}50` }}
                     >
-                      Voir le détail →
+                      Détails →
                     </Link>
                   )}
                   {proj.demo && (

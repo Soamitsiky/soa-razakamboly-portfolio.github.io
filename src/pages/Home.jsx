@@ -57,8 +57,8 @@ const navItems = [
   { label: "Compétences", path: "/skills", color: "#818CF8", icon: "⚙️" },
   { label: "Projets", path: "/projects", color: "#34D399", icon: "🚀" },
   { label: "Formation", path: "/education", color: "#FB923C", icon: "🎓" },
-  { label: "Alternance", path: "/alternance", color: "#F472B6", icon: "🔍" },
-  { label: "Contact", path: "/contact", color: "#38BDF8", icon: "✉️" },
+  
+  
 ];
 
 export default function Home() {
@@ -155,20 +155,6 @@ export default function Home() {
         }}>
           {/* Left */}
           <div>
-            <div className="fade-in" style={{
-              display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.3)",
-              borderRadius: 20, padding: "0.35rem 1rem", marginBottom: "1.5rem",
-            }}>
-              <span style={{
-                width: 7, height: 7, borderRadius: "50%", background: "var(--green)",
-                animation: "pulse 1.2s ease-in-out infinite",
-                display: "inline-block",
-              }} />
-              <span style={{ fontSize: "0.75rem", fontFamily: "var(--mono)", color: "var(--green)", fontWeight: 600 }}>
-                {profile.disponibilite}
-              </span>
-            </div>
 
             <h1 className="fade-in" style={{
               fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.05,
@@ -197,15 +183,18 @@ export default function Home() {
               {profile.presentation}
             </p>
 
-            <div className="fade-in" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "2rem" }}>
-              {["Cloud", "Réseaux", "Systèmes", "Cybersécurité"].map(t => (
-                <span key={t} className="tag">{t}</span>
-              ))}
-            </div>
+        
 
-            <div className="fade-in" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-  <Link to="/cv" className="btn btn-primary">Voir mon CV </Link>
-  
+           <div className="fade-in" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+  <a
+  href={`${process.env.PUBLIC_URL}/CV-Soa_Razakamboly-fr.pdf`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn btn-primary"
+  >
+    Voir mon CV
+  </a>
+
   <a
     href="https://www.linkedin.com/in/soa-razakamboly-7016b0327"
     target="_blank"
@@ -260,29 +249,7 @@ export default function Home() {
         </div>
 
         {/* Stats bar */}
-        <div style={{
-          marginTop: "auto", paddingBottom: "2rem",
-          display: "flex", gap: "2rem", justifyContent: "center", flexWrap: "wrap",
-        }}>
-          {[
-            { val: 3, label: "Expériences" },
-            { val: 15, label: "Compétences" },
-            { val: 3, label: "Projets" },
-            { val: 4, label: "Recommandations" },
-          ].map(s => (
-            <div key={s.label} className="reveal" style={{ textAlign: "center" }}>
-              <div style={{
-                fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800,
-                background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              }}>
-                <Counter target={s.val} />
-              </div>
-              <div style={{ color: "var(--muted)", fontSize: "0.78rem", fontFamily: "var(--mono)", letterSpacing: "0.1em" }}>
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
+        
       </section>
 
       {/* ─── QUICK NAV ─── */}
@@ -318,27 +285,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── CTA CONTACT ─── */}
-      <section style={{ padding: "4rem 8vw 6rem", textAlign: "center" }}>
-        <div className="reveal" style={{
-          maxWidth: 600, margin: "0 auto",
-          background: "rgba(56,189,248,0.04)",
-          border: "1px solid rgba(56,189,248,0.15)",
-          borderRadius: 24, padding: "3rem 2rem",
-        }}>
-          <div style={{
-            fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem",
-            background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-          }}>
-            Travaillons ensemble
-          </div>
-          <p style={{ color: "var(--white)", lineHeight: 1.8, marginBottom: "2rem" }}>
-            Je recherche une alternance à partir de septembre 2026.
-          </p>
-          <Link to="/contact" className="btn btn-primary">Me contacter →</Link>
-        </div>
-      </section>
-
+      
     </div>
     </>
   );

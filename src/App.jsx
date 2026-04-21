@@ -14,7 +14,7 @@ import Skills from "./pages/Skills";
 import Alternance from "./pages/Alternance";
 import Recommendations from "./pages/Recommendations";
 import Contact from "./pages/Contact";
-import CV from "./pages/CV";
+
 import "./App.css";
 
 
@@ -46,7 +46,7 @@ export default function App() {
               <Route path="/alternance" element={<Alternance />} />
               <Route path="/recommendations" element={<Recommendations />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/cv" element={<CV />} />
+              
             </Routes>
          
         </main> 

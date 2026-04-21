@@ -21,9 +21,7 @@ export default function Experiences() {
   return (
     <div style={{ minHeight: "100vh", padding: "6rem 2rem 4rem", maxWidth: "1100px", margin: "0 auto" }}>
       {/* En-tête */}
-      <p style={{ color: "var(--sky)", fontFamily: "var(--mono)", fontSize: "0.8rem", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-        Parcours professionnel
-      </p>
+      
       <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "var(--sky)", marginBottom: "0.75rem" }}>
         Expériences
       </h1>

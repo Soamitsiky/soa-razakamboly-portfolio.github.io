@@ -1106,7 +1106,8 @@ main { padding-top: 64px; }
 .ab-lang-name { color: #e2e8f0; font-weight: 600; font-size: 0.95rem; }
 .ab-lang-level { font-size: 0.78rem; font-weight: 700; font-family: monospace; }
 .ab-lang-bar-bg {
-  height: 4px;
+  height: 3px;
+  max-width: 10%; /* ajuste selon ce que tu veux */
   background: rgba(255,255,255,0.06);
   border-radius: 999px;
   overflow: hidden;

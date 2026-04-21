@@ -46,41 +46,30 @@ export default function ProjectDetail() {
 
       <div className="divider" />
 
-      {/* ── DESCRIPTION + IMAGE CÔTE À CÔTE ── */}
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: p.image ? "1fr 1fr" : "1fr",
-        gap: "2.5rem",
-        alignItems: "center",
-        margin: "2.5rem 0",
-      }}>
-        {/* Texte */}
-        <div>
-          <h2 style={{
-            color: p.color, fontSize: "1rem", fontWeight: 700,
-            textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1rem"
-          }}>
-            À propos du projet
-          </h2>
-          <p style={{ color: "var(--muted)", lineHeight: 1.85, fontSize: "0.95rem" }}>
-            {p.description}
-          </p>
-          {p.myRole && (
-            <p style={{
-              color: "var(--muted)", lineHeight: 1.8, fontSize: "0.9rem",
-              marginTop: "1.2rem", borderLeft: `3px solid ${p.color}`,
-              paddingLeft: "1rem"
-            }}>
-              <strong style={{ color: p.color }}>Mon rôle — </strong>{p.myRole}
-            </p>
-          )}
-        </div>
+      {/* ── INFRASTRUCTURE + IMAGE CÔTE À CÔTE ── */}
+      <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap", marginBottom: "2rem", marginTop: "2rem" }}>
 
-        {/* Image */}
+        {/* Infrastructure & DevOps à gauche */}
+        {p.devopsDetails?.length > 0 && (
+          <div style={{ flex: 1 }}>
+            <div className="page-label" style={{ marginBottom: "1rem" }}>Infrastructure & DevOps</div>
+            <div className="card" style={{ borderLeft: `3px solid ${p.color}` }}>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                {p.devopsDetails.map((d, i) => (
+                  <li key={i} style={{ display: "flex", gap: "0.6rem", fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.6 }}>
+                    <span style={{ color: p.color, flexShrink: 0 }}>▸</span>{d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+
+        {/* Image à droite */}
         {p.image && (
-          <div style={{ position: "relative" }}>
+          <div style={{ flex: "0 0 280px" }}>
             <img
-              src={p.image}
+              src={process.env.PUBLIC_URL + p.image}
               alt={`Aperçu ${p.title}`}
               loading="lazy"
               style={{
@@ -91,40 +80,12 @@ export default function ProjectDetail() {
                 display: "block",
               }}
             />
-            <div style={{
-              position: "absolute", bottom: "-20px", left: "50%",
-              transform: "translateX(-50%)", width: "70%", height: "40px",
-              background: p.color, borderRadius: "50%",
-              opacity: 0.1, filter: "blur(20px)", pointerEvents: "none",
-            }} />
           </div>
         )}
+
       </div>
 
-      {/* Responsive mobile : une colonne */}
-      <style>{`
-        @media (max-width: 640px) {
-          .proj-detail-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
-
       <div className="divider" />
-
-      {/* ── DEVOPS ── */}
-      {p.devopsDetails?.length > 0 && (
-        <div style={{ marginBottom: "2rem", marginTop: "2rem" }}>
-          <div className="page-label" style={{ marginBottom: "1rem" }}>Infrastructure & DevOps</div>
-          <div className="card" style={{ borderLeft: `3px solid ${p.color}` }}>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              {p.devopsDetails.map((d, i) => (
-                <li key={i} style={{ display: "flex", gap: "0.6rem", fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.6 }}>
-                  <span style={{ color: p.color, flexShrink: 0 }}>▸</span>{d}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
 
       {/* ── MÉTHODOLOGIE ── */}
       {p.methodology && (
