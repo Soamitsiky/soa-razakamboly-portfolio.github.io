@@ -1,39 +1,46 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { experiences } from "../data/data";
 import { useEffect, useRef } from "react";
 
-
-// Images thématiques par expérience (Unsplash - libres de droits)
 const expImages = {
   "anywr-alternance": {
-    hero: "https://images.unsplash.com/photo-1667984390527-850f63192709?w=1400&q=80", // Azure cloud
+    hero: "https://images.unsplash.com/photo-1667984390527-850f63192709?w=1400&q=80",
     sections: [
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", // réseau/cloud
-      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80", // code/terminal
-      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80", // infrastructure réseau
-      "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80", // data center
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80",
     ],
   },
   "anywr-stage": {
-    hero: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1400&q=80", // support IT
+    hero: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1400&q=80",
     sections: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80", // help desk
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", // réseau
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
     ],
   },
   "ichtus-stage": {
-    hero: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1400&q=80", // Docker/containers
+    hero: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1400&q=80",
     sections: [
-      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80", // serveur
-      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80", // containers
+      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
     ],
   },
 };
 
 export default function ExperienceDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const exp = experiences.find((e) => e.id === id);
   const sectionsRef = useRef([]);
+
+  const handleBack = () => {
+    navigate("/");
+    setTimeout(() => {
+      document.querySelector("#experiences")?.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,7 +68,11 @@ export default function ExperienceDetail() {
         <img src={imgs.hero} alt={exp.title} className="ed-hero-img" />
         <div className="ed-hero-overlay" style={{ background: `linear-gradient(135deg, ${exp.color}30 0%, #0a0f1e 60%)` }} />
         <div className="ed-hero-content ed-animate">
-          <Link to="/experiences" className="ed-back">← Retour aux expériences</Link>
+          {/* ✅ Remplacé Link par button */}
+          <button onClick={handleBack} className="ed-back"
+            style={{ background: "none", border: "none", cursor: "pointer" }}>
+            ← Retour aux expériences
+          </button>
           <div className="ed-hero-badges">
             <span className="ed-badge" style={{ background: `${exp.color}25`, color: exp.color, border: `1px solid ${exp.color}50` }}>{exp.type}</span>
             <span className="ed-badge ed-badge-period">{exp.period}</span>
@@ -116,9 +127,11 @@ export default function ExperienceDetail() {
 
       {/* ── FOOTER ── */}
       <div className="ed-footer ed-animate">
-        <Link to="/experiences" className="ed-btn-back" style={{ border: `1px solid ${exp.color}50`, color: exp.color }}>
+        {/* ✅ Remplacé Link par button */}
+        <button onClick={handleBack} className="ed-btn-back"
+          style={{ border: `1px solid ${exp.color}50`, color: exp.color, background: "none", cursor: "pointer" }}>
           ← Retour aux expériences
-        </Link>
+        </button>
       </div>
 
     </div>

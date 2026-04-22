@@ -80,7 +80,7 @@ export default function Projects() {
                 )}
                 
                 <div className="pj-back-links">
-                  {proj.id !== 4 && proj.id !== "vps-portfolio" && (
+                  {proj.id !== "portfolio" && proj.id !== "vps-portfolio" && (
                     <Link
                       to={`/projects/${proj.id}`}
                       className="pj-link"

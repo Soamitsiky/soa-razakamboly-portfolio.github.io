@@ -65,7 +65,7 @@ export const experiences = [
     company: "Anywr Group",
     period: "Sept 2025 – Août 2026",
     type: "Alternance",
-    color: "#e7dc3d",
+    color: "#fff386",
     summary: "Administration du cloud Microsoft 365, automatisation et infrastructure réseau.",
     missions: [
       {
@@ -111,7 +111,7 @@ export const experiences = [
     company: "Anywr Group",
     period: "Avr 2025 – Juil 2025",
     type: "Stage",
-    color: "#818CF8",
+    color: "#ec9f3a",
     summary: "Support technique, gestion des incidents et maintenance réseau.",
     missions: [
       {
@@ -144,7 +144,7 @@ export const experiences = [
     company: "Ichtus IT",
     period: "Avr 2024 – Juin 2024",
     type: "Stage",
-    color: "#34D399",
+    color: "#f0d5b7",
     summary: "Conteneurisation et déploiement de l'application Eatzee avec Docker.",
     missions: [
       {
@@ -193,7 +193,7 @@ export const projects = [
     title: "Infrastructure Virtualisée",
     subtitle: "Anywr Group — pfSense & Active Directory",
     emoji: "🛡️",
-    color: "#34D399",
+    color: "#8ea6d8",
     status: "Terminé",
     demo: null,
     summary: "Architecture réseau virtualisée complète sous Hyper-V.",
@@ -227,19 +227,28 @@ export const projects = [
     },
   },
   
-  {
-  id: 4,
+ {
+  id: "portfolio",
   title: "Portfolio Personnel",
   subtitle: "REACT · GITHUB PAGES",
-  summary: "Conception et développement de mon portfolio en React.js, déployé sur GitHub Pages.",
+  image: "/portfolio.jpg",
   emoji: "💼",
-  color: "#ecee69",        // violet — pour se démarquer des 3 autres
+  color: "#6092db",
   status: "En cours",
-  stack: {
-    frontend: ["React.js", "CSS3", "React Router"],
-    outils:   ["GitHub Pages", "EmailJS", "Git"],
-  },
   demo: "https://soamitsiky.github.io/soa-razakamboly-portfolio.github.io/",
+  summary: "Conception et développement de mon portfolio en React.js, déployé sur GitHub Pages.",
+  description: "Portfolio personnel conçu et développé from scratch en React.js. Inclut une navigation fluide, des animations, un formulaire de contact via EmailJS et un déploiement automatisé sur GitHub Pages.",
+  myRole: "Conception, développement et déploiement complet du portfolio.",
+  methodology: "Développement itératif — ajout progressif des sections et améliorations continues.",
+  devopsDetails: [
+    "Déploiement automatisé sur GitHub Pages",
+    "Routing côté client avec React Router",
+    "Formulaire de contact intégré avec EmailJS",
+  ],
+  stack: {
+    "Frontend": ["React.js", "CSS3", "React Router"],
+    "Outils": ["GitHub Pages", "EmailJS", "Git"],
+  },
 },
 ];
 

@@ -1,14 +1,24 @@
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/data";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectDetail() {
   const { id } = useParams();
   const p = projects.find(p => p.id === id);
   if (!p) return <div className="page" style={{ zIndex: 1, position: "relative" }}>Projet introuvable.</div>;
+  const navigate = useNavigate();
+  const handleBack = () => {
+  navigate("/");
+  setTimeout(() => {
+    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+  }, 300);
+};
 
   return (
     <div className="page" style={{ position: "relative", zIndex: 1, maxWidth: 900, margin: "0 auto" }}>
-      <Link to="/projects" className="back-link">← Retour aux projets</Link>
+      <button onClick={handleBack} className="back-link" style={{ background: "none", border: "none", cursor: "pointer" }}>
+  ← Retour aux projets
+</button>
 
       {/* ── EN-TÊTE ── */}
       <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem", marginBottom: "2rem", flexWrap: "wrap" }}>
