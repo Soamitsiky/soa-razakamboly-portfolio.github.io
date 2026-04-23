@@ -566,9 +566,9 @@ export default function Home() {
       style={{ padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
       LinkedIn
     </a>
-    <a href="mailto:mitsikyraza@gmail.com"
+    <a href="mailto:soa.raza.pro@gmail.com"
       style={{ padding: "0.75rem 1.5rem", border: "2px solid #00c6ff", color: "#82c5d8", borderRadius: "999px", fontWeight: "600", textDecoration: "none", background: "transparent" }}>
-      mitsikyraza@gmail.com
+     soa.raza.pro@gmail.com
     </a>
   </div>
 
@@ -581,7 +581,7 @@ export default function Home() {
     <details style={{ marginTop: "0.4rem" }}>
       <summary style={{ cursor: "pointer", opacity: 0.8 }}>Mentions légales</summary>
       <p style={{ marginTop: "0.4rem" }}><strong>Éditeur :</strong> Soa M. Razakamboly — particulier</p>
-      <p><strong>Contact :</strong> mitsikyraza@gmail.com</p>
+      <p><strong>Contact :</strong> soa.raza.pro@gmail.com</p>
       <p><strong>Hébergeur :</strong> GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
     </details>
   </footer>
