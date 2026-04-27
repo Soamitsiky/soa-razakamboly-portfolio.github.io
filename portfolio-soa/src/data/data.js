@@ -4,7 +4,7 @@ export const profile = {
   subtitle: "Cloud Computing · Administration Systèmes & Réseaux · DevOps",
   presentation: "Étudiante passionnée par les systèmes, la cybersécurité et le cloud computing, je partage ici mes projets, mes compétences clés et les outils que j'utilise au quotidien.",
   disponibilite: "Recherche Alternance dès Septembre 2026",
-  email: "mitsikyraza@gmail.com",
+  email: "soa.raza.pro@gmail.com",
   //phone: "07 81 04 52 87",
   location: "France",
   linkedin: "https://www.linkedin.com/in/soa-razakamboly-7016b0327/",
@@ -22,22 +22,15 @@ export const profile = {
 export const skills = [
   {
     category: "Cloud & Infrastructure",
-    icon: "☁️",
     color: "#38BDF8",
     items: ["Microsoft 365", "Defender", "Exchange", "Intune", "SharePoint", "Entra ID", "PureView", "Microsoft Azure", "Google Cloud"],
   },
   {
     category: "Automatisation & DevOps",
-    icon: "⚙️",
     color: "#818CF8",
     items: ["Bash", "PowerShell", "Kubernetes", "Docker", "CI/CD GitLab", "Ansible"],
   },
-  {
-    category: "Réseaux & Télécom",
-    icon: "🌐",
-    color: "#34D399",
-    items: ["Architecture réseau", "Services & protocoles", "Fibre optique", "Hyper-V", "pfSense", "Aruba"],
-  },
+  
   {
     category: "Systèmes & Administration",
     icon: "🖥️",
@@ -46,16 +39,10 @@ export const skills = [
   },
   {
     category: "Langages",
-    icon: "💻",
     color: "#F472B6",
     items: ["Python", "C", "C++"],
   },
-   {
-    category: "Méthodes de travail",
-    color: "#34D399",
-    icon: "⚙️",
-    items: ["ITIL", "Agile", "Scrum"],
-  },
+   
 ];
 
 export const experiences = [

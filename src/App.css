@@ -67,7 +67,7 @@ main { padding-top: 64px; }
   padding: 0 clamp(1rem, 5vw, 4rem);  /* ← marges latérales fluides */
   width: 100%;
 }
-.page {
+.page { 
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 5vw, 4rem);
@@ -1503,4 +1503,18 @@ main { padding-top: 64px; }
 
 .page-header {
   margin-bottom: 3rem;
+}
+
+/* ── Skills Logo Grid — Fade Stagger ── */
+@keyframes skillFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.skill-logo-item {
+  animation: skillFadeUp 0.45s ease both;
+}
+
+.skill-logo-item:hover {
+  transform: translateY(-3px) scale(1.06) !important;
 }
