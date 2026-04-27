@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
-  { label: "Accueil", anchor: "#hero" },
+  
   { label: "À propos", anchor: "#about" },
   { label: "Compétences", anchor: "#skills" },
    { label: "Expériences", anchor: "#experiences" },
@@ -14,7 +14,7 @@ const navLinks = [
 ];
 
 const mobileLinks = [
-  { label: "Accueil",     anchor: "#hero",        path: "/",  color: "#38BDF8" },
+  
   { label: "À propos",    anchor: "#about",       path: "/",  color: "#A78BFA" },
   { label: "Compétences", anchor: "#skills",      path: "/",  color: "#FB923C" },
   { label: "Expériences", anchor: "#experiences", path: "/",  color: "#818CF8" },

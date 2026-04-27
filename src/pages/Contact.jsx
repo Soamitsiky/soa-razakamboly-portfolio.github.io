@@ -62,7 +62,7 @@ export default function Contact() {
         </a>
 
         <a
-          href="mailto:mitsikyraza@gmail.com"
+          href="mailto:soa.raza.pro@gmail.com"
           style={{
             padding: "0.75rem 1.5rem",
             border: "2px solid #00c6ff",
@@ -73,7 +73,7 @@ export default function Contact() {
             background: "transparent",
           }}
         >
-          mitsikyraza@gmail.com
+          soa.raza.pro@gmail.com
         </a>
 
       </div> 
@@ -210,7 +210,7 @@ export default function Contact() {
               disabled={loading}
               style={{
                 padding: "0.875rem 2rem",
-                background: loading ? "rgba(0,188,212,0.4)" : "#8641d4",
+                background: loading ? "rgba(0,188,212,0.4)" : "#41a8f2",
                 border: "none",
                 borderRadius: "8px",
                 color: "#fff",
@@ -253,7 +253,7 @@ export default function Contact() {
       <strong>Éditeur :</strong> Soa M. Razakamboly — particulier
     </p>
     <p>
-      <strong>Contact :</strong> mitsikyraza@gmail.com
+      <strong>Contact :</strong> soa.raza.pro@gmail.com
     </p>
     <p>
       <strong>Hébergeur :</strong> GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA

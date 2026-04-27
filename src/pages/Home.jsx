@@ -4,6 +4,17 @@ import { profile, skills, experiences, projects, recommendations, alternance, ed
 
 import emailjs from "@emailjs/browser";
 
+// ── Hook responsive ──
+function useWindowWidth() {
+  const [width, setWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
+  useEffect(() => {
+    const handle = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handle);
+    return () => window.removeEventListener("resize", handle);
+  }, []);
+  return width;
+}
+
 
 
 // ── Typing animation ──
@@ -153,7 +164,7 @@ function ContactForm() {
       </div>
       {error && <p style={{ color: "#ff6b6b", fontSize: "0.875rem" }}>❌ Une erreur s'est produite. Vérifie tes clés EmailJS.</p>}
       <button type="submit" disabled={loading}
-        style={{ padding: "0.875rem 2rem", background: loading ? "rgba(0,188,212,0.4)" : "#8641d4", border: "none", borderRadius: "8px", color: "#fff", fontSize: "1rem", fontWeight: "600", cursor: loading ? "not-allowed" : "pointer", transition: "all 0.2s ease" }}>
+        style={{ padding: "0.875rem 2rem", background: loading ? "rgba(0,188,212,0.4)" : "rgb(0, 171, 244)", border: "none", borderRadius: "8px", color: "#fff", fontSize: "1rem", fontWeight: "600", cursor: loading ? "not-allowed" : "pointer", transition: "all 0.2s ease" }}>
         {loading ? "Envoi en cours..." : "Envoyer le message"}
       </button>
       
@@ -163,6 +174,8 @@ function ContactForm() {
 }
 // ── Main component ──
 export default function Home() {
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth < 768;
  useEffect(() => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -184,8 +197,8 @@ export default function Home() {
   return (
     <>
       {/* ─── HERO ─── */}
-      <section id="about" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "4rem", alignItems: "center", width: "100%", maxWidth: "1200px" }}>
+      <section id="about" style={{ padding: isMobile ? "3rem 1.25rem 2rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr auto", gap: isMobile ? "2rem" : "4rem", alignItems: "center", width: "100%", maxWidth: "1200px" }}>
           <div>
             <h1 className="fade-in" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.05, marginBottom: "1rem" }}>
               {profile.name.split(" ")[0]}{" "}
@@ -199,25 +212,35 @@ export default function Home() {
             <p className="fade-in" style={{ color: "var(--white)", fontSize: "1rem", lineHeight: 1.8, maxWidth: 520, marginBottom: "2rem" }}>
               {profile.presentation}
             </p>
-            <div className="fade-in" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div className="fade-in" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
               <a href={`${process.env.PUBLIC_URL}/CV-Soa_Razakamboly-fr.pdf`} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                 Voir mon CV
               </a>
               <a href="https://www.linkedin.com/in/soa-razakamboly-7016b0327" target="_blank" rel="noopener noreferrer"
-                style={{ padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
-                LinkedIn
+                title="LinkedIn"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "44px", height: "44px", background: "linear-gradient(135deg, #00c6ff, #0072ff)", borderRadius: "50%", textDecoration: "none", flexShrink: 0 }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-label="LinkedIn">
+                  <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.987V9h3.102v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.8 1.8 0 1 1 0-3.601 1.8 1.8 0 0 1 0 3.601zm1.554 13.019H3.781V9h3.11v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://github.com/Soamitsiky" target="_blank" rel="noopener noreferrer"
+                title="GitHub"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "44px", height: "44px", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "50%", textDecoration: "none", flexShrink: 0, transition: "background 0.2s" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-label="GitHub">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
               </a>
             </div>
           </div>
 
           {/* Photo */}
-          <div style={{ position: "relative", display: "inline-block" }}>
-            <div style={{ width: 280, height: 280, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", background: "var(--grad)", padding: 3 }}>
+          <div style={{ position: "relative", display: "flex", justifyContent: isMobile ? "center" : "flex-end", order: isMobile ? -1 : 0 }}>
+            <div style={{ width: isMobile ? 180 : 280, height: isMobile ? 180 : 280, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", background: "var(--grad)", padding: 3 }}>
               <div style={{ width: "100%", height: "100%", borderRadius: "inherit", overflow: "hidden" }}>
                 <img src={process.env.PUBLIC_URL + "/photosoa.jpg"} alt="Soa Razakamboly" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
             </div>
-            <div style={{ position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)", background: "rgba(4,12,24,0.88)", border: "1px solid rgba(52,211,153,0.5)", borderRadius: 999, padding: "0.35rem 1rem", fontSize: "0.72rem", fontFamily: "var(--mono)", color: "var(--green)", display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap", backdropFilter: "blur(8px)" }}>
+            <div style={{ position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)", background: "rgba(4,12,24,0.88)", border: "1px solid rgba(52,211,153,0.5)", borderRadius: 999, padding: "0.35rem 0.75rem", fontSize: isMobile ? "0.65rem" : "0.72rem", fontFamily: "var(--mono)", color: "var(--green)", display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap", backdropFilter: "blur(8px)" }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--green)", animation: "pulse 1.5s ease-in-out infinite", display: "inline-block" }} />
               Recherche alternance - sept 2026
             </div>
@@ -254,7 +277,7 @@ export default function Home() {
           </div>
 
           {/* Langues */}
-          <div className="ab-reveal" style={{ minWidth: 200 }}>
+          <div className="ab-reveal" style={{ minWidth: isMobile ? "100%" : 200 }}>
             <p style={{ fontFamily: "var(--mono)", color: "var(--muted)", fontSize: "0.75rem", letterSpacing: "0.1em", marginBottom: "1rem" }}>LANGUES</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {langues.map(l => (
@@ -277,7 +300,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── COMPÉTENCES ─── */}
-      <section id="skills" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="skills" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
         
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "3rem" }}>Technologies & Outils</h2>
         <div className="grid-3 reveal">
@@ -300,7 +323,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── EXPÉRIENCES — flip cards ─── */}
-<section id="experiences" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+<section id="experiences" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
  
   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
     <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800 }}>Expériences</h2>
@@ -367,7 +390,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── PROJETS — flip cards ─── */}
-      <section id="projects" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="projects" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
        
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
           <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800 }}>Projets récents</h2>
@@ -436,7 +459,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56, 191, 248, 0.22)", maxWidth: 1200, margin: "0 auto" }} />
 
 {/* Formation */}
-<section id="education" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+<section id="education" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
 
   <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "3rem" }}>
     Mon parcours
@@ -467,7 +490,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56, 191, 248, 0.22)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── RECOMMANDATIONS ─── */}
-      <section id="recs" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="recs" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
 
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "1rem" }}>Recommandations</h2>
         <p style={{ color: "#cbd5e1", marginBottom: "2.5rem" }}>Ce que disent mes encadrants et professeurs.</p>
@@ -502,7 +525,7 @@ export default function Home() {
 
 
       {/* ─── ALTERNANCE ─── */}
-      <section id="alternance" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="alternance" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
        
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "3rem" }}>Recherche d'alternance</h2>
 
@@ -553,7 +576,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── CONTACT ─── */}
-<section id="contact" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+<section id="contact" style={{ padding: isMobile ? "2.5rem 1.25rem" : "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
   
   <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "1rem", textAlign: "center" }}>
   Travaillons ensemble
@@ -561,10 +584,22 @@ export default function Home() {
 
 
   {/* Boutons rapides */}
-  <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem", justifyContent: "center" }}>
+  <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem", justifyContent: "center", alignItems: "center" }}>
     <a href="https://www.linkedin.com/in/soa-razakamboly-7016b0327" target="_blank" rel="noopener noreferrer"
-      style={{ padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
+      title="LinkedIn"
+      style={{ display: "flex", alignItems: "center", gap: "0.55rem", padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+        <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.987V9h3.102v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.8 1.8 0 1 1 0-3.601 1.8 1.8 0 0 1 0 3.601zm1.554 13.019H3.781V9h3.11v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
       LinkedIn
+    </a>
+    <a href="https://github.com/Soamitsiky" target="_blank" rel="noopener noreferrer"
+      title="GitHub"
+      style={{ display: "flex", alignItems: "center", gap: "0.55rem", padding: "0.75rem 1.5rem", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+      GitHub
     </a>
     <a href="mailto:soa.raza.pro@gmail.com"
       style={{ padding: "0.75rem 1.5rem", border: "2px solid #00c6ff", color: "#82c5d8", borderRadius: "999px", fontWeight: "600", textDecoration: "none", background: "transparent" }}>
