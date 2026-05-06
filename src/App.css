@@ -1518,3 +1518,35 @@ main { padding-top: 64px; }
 .skill-logo-item:hover {
   transform: translateY(-3px) scale(1.06) !important;
 }
+
+/* ── Responsive Mobile ── */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .ab-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 2rem !important;
+  }
+
+  .ab-hero > div {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .flip-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pj-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}

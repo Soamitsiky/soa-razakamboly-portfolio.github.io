@@ -1,12 +1,18 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { profile, skills, experiences, projects, recommendations, alternance, education } from "../data/data";
-
-
 import emailjs from "@emailjs/browser";
 
-
-
+// ── Hook responsive ──
+function useWindowWidth() {
+  const [w, setW] = React.useState(window.innerWidth);
+  React.useEffect(() => {
+    const handler = () => setW(window.innerWidth);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return w;
+}
 
 // ── Typing animation ──
 function TypedText({ words }) {
@@ -33,7 +39,6 @@ function TypedText({ words }) {
   );
 }
 
-
 // ── Soft skills data ──
 const softSkills = [
   { icon: "🧘", title: "Calme & sang-froid", color: "#38BDF8", situation: "2 semaines seule en autonomie chez Anywr", text: "Gérée seule pendant 2 semaines sans accompagnement, j'ai appris que la persévérance paie toujours. Peu importe le temps que ça prend, je cherche jusqu'à trouver." },
@@ -43,13 +48,11 @@ const softSkills = [
   { icon: "🔄", title: "Adaptabilité", color: "#F472B6", situation: "Environnements variés", text: "D'un ticket support à la configuration Azure, en passant par Docker et PowerShell, j'adapte rapidement ma posture selon le contexte et les interlocuteurs." },
 ];
 
-
 const langues = [
   { lang: "Français", level: "Courant", color: "#38BDF8" },
   { lang: "Anglais", level: "Courant", color: "#818CF8" },
   { lang: "Malgache", level: "Natif", color: "#34D399" },
 ];
-
 
 const hobbies = [
   { emoji: "🏊", label: "Natation pro" },
@@ -57,7 +60,6 @@ const hobbies = [
   { emoji: "🎸", label: "Guitare" },
   { emoji: "🎲", label: "Sudoku" },
 ];
-
 
 // ── Carousel ──
 function Carousel({ skills: items }) {
@@ -144,7 +146,7 @@ function ContactForm() {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit}
-     style={{ maxWidth: 600, margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+      style={{ maxWidth: 600, margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <label style={{ color: "#aaa", fontSize: "0.875rem" }}>Votre nom</label>
         <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Nom" required style={inputStyle} />
@@ -167,13 +169,12 @@ function ContactForm() {
   );
 }
 
-// ── CSS keyframes pour colonnes ──
+// ── CSS keyframes ticker ──
 const skillColumnsStyle = `
   @keyframes tickerLTR { 0% { transform: translateX(0); }          100% { transform: translateX(-33.333%); } }
   @keyframes tickerRTL { 0% { transform: translateX(-33.333%); }   100% { transform: translateX(0); } }
 `;
 
-// ── Skills : Colonnes verticales défilantes avec logos ──
 // ── SVG inline pour produits Microsoft & PowerShell ──
 const CUSTOM_SVG = {
   "Microsoft 365 administration": (
@@ -230,8 +231,6 @@ const CUSTOM_SVG = {
   ),
 };
 
-// Simple Icons slugs confirmés
-// Simple Icons slugs confirmés
 const SKILL_ICON_MAP = {
   "Microsoft Azure":  "microsoftazure",
   "Google Cloud":     "googlecloud",
@@ -245,8 +244,6 @@ const SKILL_ICON_MAP = {
   "C":                "c",
 };
 
-const SKILL_EMOJI_MAP = {};
-
 function SkillItem({ item, color }) {
   const customSvg = CUSTOM_SVG[item];
   const slug = SKILL_ICON_MAP[item];
@@ -254,94 +251,49 @@ function SkillItem({ item, color }) {
 
   return (
     <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "0.45rem",
-      minWidth: 64,
-      padding: "0 0.75rem",
-      flexShrink: 0,
+      display: "flex", flexDirection: "column", alignItems: "center",
+      gap: "0.45rem", minWidth: 64, padding: "0 0.75rem", flexShrink: 0,
     }}>
       {customSvg ? (
         customSvg
       ) : slug && !imgError ? (
         <img
           src={`https://cdn.simpleicons.org/${slug}/${color.replace("#", "")}`}
-          alt={item}
-          width={32}
-          height={32}
-          loading="lazy"
+          alt={item} width={32} height={32} loading="lazy"
           style={{ objectFit: "contain" }}
           onError={() => setImgError(true)}
         />
       ) : (
         <span style={{ fontSize: "1.6rem", lineHeight: 1 }}>⚙️</span>
       )}
-      <span style={{
-        fontSize: "0.62rem",
-        color: "rgba(255,255,255,0.5)",
-        textAlign: "center",
-        whiteSpace: "nowrap",
-      }}>{item}</span>
+      <span style={{ fontSize: "0.62rem", color: "rgba(255,255,255,0.5)", textAlign: "center", whiteSpace: "nowrap" }}>
+        {item}
+      </span>
     </div>
   );
 }
 
 function SkillColumns() {
-  // Chaque catégorie = une rangée horizontale défilante
-  // Rangées paires : droite → gauche | Rangées impaires : gauche → droite
-
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
       {skills.map((s, rowIdx) => {
-        const items = [...s.items, ...s.items, ...s.items]; // triple pour boucle fluide
+        const items = [...s.items, ...s.items, ...s.items];
         const duration = 18 + rowIdx * 4;
         const animName = rowIdx % 2 === 0 ? "tickerLTR" : "tickerRTL";
-
         return (
           <div key={rowIdx}>
-            {/* Label catégorie */}
-            <div style={{
-              display: "flex", alignItems: "center", gap: "0.6rem",
-              marginBottom: "1rem",
-            }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1rem" }}>
               <span style={{ fontSize: "1rem" }}>{s.icon}</span>
-              <span style={{
-                fontSize: "0.72rem", fontWeight: 700, color: s.color,
-                fontFamily: "var(--mono)", letterSpacing: "0.1em",
-              }}>
+              <span style={{ fontSize: "0.72rem", fontWeight: 700, color: s.color, fontFamily: "var(--mono)", letterSpacing: "0.1em" }}>
                 {s.category.toUpperCase()}
               </span>
-              <div style={{
-                flex: 1, height: 1,
-                background: `linear-gradient(90deg, ${s.color}50, transparent)`,
-              }} />
+              <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${s.color}50, transparent)` }} />
             </div>
-
-            {/* Bande défilante */}
             <div style={{ overflow: "hidden", position: "relative" }}>
-              {/* Fondu gauche */}
-              <div style={{
-                position: "absolute", left: 0, top: 0, bottom: 0, width: 80,
-                background: "linear-gradient(to right, #040c18, transparent)",
-                zIndex: 2, pointerEvents: "none",
-              }} />
-              {/* Fondu droite */}
-              <div style={{
-                position: "absolute", right: 0, top: 0, bottom: 0, width: 80,
-                background: "linear-gradient(to left, #040c18, transparent)",
-                zIndex: 2, pointerEvents: "none",
-              }} />
-
-              <div style={{
-                display: "flex",
-                gap: "0.5rem",
-                animation: `${animName} ${duration}s linear infinite`,
-                width: "max-content",
-              }}>
-                {items.map((item, i) => (
-                  <SkillItem key={i} item={item} color={s.color} />
-                ))}
+              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to right, #040c18, transparent)", zIndex: 2, pointerEvents: "none" }} />
+              <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to left, #040c18, transparent)", zIndex: 2, pointerEvents: "none" }} />
+              <div style={{ display: "flex", gap: "0.5rem", animation: `${animName} ${duration}s linear infinite`, width: "max-content" }}>
+                {items.map((item, i) => <SkillItem key={i} item={item} color={s.color} />)}
               </div>
             </div>
           </div>
@@ -351,33 +303,40 @@ function SkillColumns() {
   );
 }
 
-
 // ── Main component ──
 export default function Home() {
- useEffect(() => {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("revealed");
-        e.target.classList.add("ab-visible");
-        e.target.classList.add("pj-visible");
-        e.target.classList.add("visible"); 
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
+  const isMobile = useWindowWidth() < 768;
 
-  document.querySelectorAll(".reveal, .ab-reveal, .pj-card-wrapper, .flip-card-wrapper").forEach(el => obs.observe(el));
-  return () => obs.disconnect();
-}, []);
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed", "ab-visible", "pj-visible", "visible");
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal, .ab-reveal, .pj-card-wrapper, .flip-card-wrapper").forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  const sectionPad = isMobile ? "3rem 1.25rem" : "6rem 5vw";
 
   return (
     <>
       <style>{skillColumnsStyle}</style>
+
       {/* ─── HERO ─── */}
-      <section id="about" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "4rem", alignItems: "center", width: "100%", maxWidth: "1200px" }}>
-          <div>
+      <section id="hero" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{
+          display: "flex",
+          flexDirection: isMobile ? "column-reverse" : "row",
+          gap: isMobile ? "2rem" : "4rem",
+          alignItems: isMobile ? "flex-start" : "center",
+          width: "100%",
+        }}>
+          {/* Texte */}
+          <div style={{ flex: 1, minWidth: 0 }}>
             <h1 className="fade-in" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1.05, marginBottom: "1rem" }}>
               {profile.name.split(" ")[0]}{" "}
               <span style={{ background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
@@ -398,12 +357,17 @@ export default function Home() {
                 style={{ padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
                 LinkedIn
               </a>
+              <a href="https://github.com/soamitsiky" target="_blank" rel="noopener noreferrer"
+                style={{ padding: "0.75rem 1.5rem", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                GitHub
+              </a>
             </div>
           </div>
 
           {/* Photo */}
-          <div style={{ position: "relative", display: "inline-block" }}>
-            <div style={{ width: 280, height: 280, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", background: "var(--grad)", padding: 3 }}>
+          <div style={{ position: "relative", display: "inline-block", flexShrink: 0 }}>
+            <div style={{ width: isMobile ? 160 : 280, height: isMobile ? 160 : 280, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", background: "var(--grad)", padding: 3 }}>
               <div style={{ width: "100%", height: "100%", borderRadius: "inherit", overflow: "hidden" }}>
                 <img src={process.env.PUBLIC_URL + "/photosoa.jpg"} alt="Soa Razakamboly" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
@@ -419,16 +383,22 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── À PROPOS ─── */}
-      <section id="about" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
-        <div className="ab-hero" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "4rem", alignItems: "center" }}>
-          <div>
+      <section id="about" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          gap: isMobile ? "2.5rem" : "4rem",
+          alignItems: isMobile ? "stretch" : "center",
+        }}>
+          {/* Texte */}
+          <div style={{ flex: 1, minWidth: 0 }}>
             <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "1.5rem" }}>
               Qui suis-je <span style={{ color: "var(--sky)" }}>?</span>
             </h2>
-            <p style={{ color: "var(--white)", lineHeight: 1.8, marginBottom: "1rem" }}>
+            <p style={{ color: "var(--white)", lineHeight: 1.8, marginBottom: "1rem", fontSize: isMobile ? "0.95rem" : "1rem" }}>
               Je suis <strong>Soa</strong>, étudiante en BUT 3ème année Réseaux & Systèmes à l'IUT de Villeneuve-d'Ascq, en alternance chez <strong>Anywr Group</strong>.
             </p>
-            <p style={{ color: "var(--white)", lineHeight: 1.8 }}>
+            <p style={{ color: "var(--white)", lineHeight: 1.8, fontSize: isMobile ? "0.95rem" : "1rem" }}>
               Une vraie curiosité technique, le goût du défi, et une envie naturelle d'aider les gens.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "2rem" }}>
@@ -442,7 +412,7 @@ export default function Home() {
           </div>
 
           {/* Langues */}
-          <div className="ab-reveal" style={{ minWidth: 200 }}>
+          <div className="ab-reveal" style={{ width: isMobile ? "100%" : 220, flexShrink: 0 }}>
             <p style={{ fontFamily: "var(--mono)", color: "var(--muted)", fontSize: "0.75rem", letterSpacing: "0.1em", marginBottom: "1rem" }}>LANGUES</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {langues.map(l => (
@@ -465,7 +435,7 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── COMPÉTENCES ─── */}
-      <section id="skills" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="skills" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "0.75rem" }}>
           Technologies & Outils
         </h2>
@@ -475,66 +445,60 @@ export default function Home() {
         <SkillColumns />
       </section>
 
-      {/* ─── EXPÉRIENCES — flip cards ─── */}
-<section id="experiences" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
-  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
-    <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800 }}>Expériences</h2>
-  </div>
-  <div className="flip-grid">
-    {experiences.slice(0, 3).map((exp, i) => (
-      <div className="flip-card-wrapper" key={exp.id} style={{ transitionDelay: `${i * 0.1}s` }}>
-        <div className="flip-card">
-          {/* FACE AVANT */}
-          <div className="flip-face flip-front" style={{ borderColor: exp.color }}>
-            <div className="flip-glow" style={{ background: exp.color }} />
-            <div className="flip-front-top">
-              <span className="flip-badge" style={{
-                background: exp.type === "Alternance" ? "rgba(251,191,36,0.15)" : "rgba(129,140,248,0.15)",
-                color: exp.type === "Alternance" ? "#FBBF24" : "#818CF8",
-                border: `1px solid ${exp.type === "Alternance" ? "#FBBF2440" : "#818CF840"}`
-              }}>
-                {exp.type}
-              </span>
-              <span style={{ fontSize: "1.4rem" }}>
-                {exp.type === "Alternance" ? "⚡" : "🎓"}
-              </span>
-            </div>
-            <div>
-              <h3 className="flip-title" style={{ color: exp.color }}>{exp.title}</h3>
-              <p className="flip-company">{exp.company}</p>
-              <p className="flip-period">{exp.period}</p>
-              <p className="flip-hint" style={{ marginTop: "0.75rem" }}>Survolez pour les détails →</p>
-            </div>
-          </div>
-          {/* FACE ARRIÈRE */}
-          <div className="flip-face flip-back" style={{ borderColor: exp.color }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <h3 style={{ fontSize: "1rem", fontWeight: 700, color: exp.color }}>{exp.title}</h3>
-              <span style={{ fontSize: "1.1rem" }}>{exp.type === "Alternance" ? "⚡" : "🎓"}</span>
-            </div>
-            <p style={{ fontSize: "0.75rem", color: "#64748b", fontFamily: "var(--mono)" }}>{exp.company} · {exp.period}</p>
-            <p className="flip-summary">{exp.description || exp.summary || ""}</p>
-            {exp.stack && (
-              <div className="flip-techs">
-                {(Array.isArray(exp.stack) ? exp.stack : Object.values(exp.stack).flat()).slice(0, 6).map(t => (
-                  <span key={t} className="flip-tech" style={{ background: `${exp.color}15`, color: exp.color, border: `1px solid ${exp.color}30` }}>{t}</span>
-                ))}
-              </div>
-            )}
-            <Link to={`/experiences/${exp.id}`} className="flip-link" style={{ color: exp.color, borderColor: `${exp.color}50` }}>
-              Voir le détail →
-            </Link>
-          </div>
+      {/* ─── EXPÉRIENCES ─── */}
+      <section id="experiences" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
+          <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800 }}>Expériences</h2>
         </div>
-      </div>
-    ))}
-  </div>
-</section>
+        <div className="flip-grid">
+          {experiences.slice(0, 3).map((exp, i) => (
+            <div className="flip-card-wrapper" key={exp.id} style={{ transitionDelay: `${i * 0.1}s` }}>
+              <div className="flip-card">
+                <div className="flip-face flip-front" style={{ borderColor: exp.color }}>
+                  <div className="flip-glow" style={{ background: exp.color }} />
+                  <div className="flip-front-top">
+                    <span className="flip-badge" style={{
+                      background: exp.type === "Alternance" ? "rgba(251,191,36,0.15)" : "rgba(129,140,248,0.15)",
+                      color: exp.type === "Alternance" ? "#FBBF24" : "#818CF8",
+                      border: `1px solid ${exp.type === "Alternance" ? "#FBBF2440" : "#818CF840"}`
+                    }}>{exp.type}</span>
+                    <span style={{ fontSize: "1.4rem" }}>{exp.type === "Alternance" ? "⚡" : "🎓"}</span>
+                  </div>
+                  <div>
+                    <h3 className="flip-title" style={{ color: exp.color }}>{exp.title}</h3>
+                    <p className="flip-company">{exp.company}</p>
+                    <p className="flip-period">{exp.period}</p>
+                    <p className="flip-hint" style={{ marginTop: "0.75rem" }}>Survolez pour les détails →</p>
+                  </div>
+                </div>
+                <div className="flip-face flip-back" style={{ borderColor: exp.color }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <h3 style={{ fontSize: "1rem", fontWeight: 700, color: exp.color }}>{exp.title}</h3>
+                    <span style={{ fontSize: "1.1rem" }}>{exp.type === "Alternance" ? "⚡" : "🎓"}</span>
+                  </div>
+                  <p style={{ fontSize: "0.75rem", color: "#64748b", fontFamily: "var(--mono)" }}>{exp.company} · {exp.period}</p>
+                  <p className="flip-summary">{exp.description || exp.summary || ""}</p>
+                  {exp.stack && (
+                    <div className="flip-techs">
+                      {(Array.isArray(exp.stack) ? exp.stack : Object.values(exp.stack).flat()).slice(0, 6).map(t => (
+                        <span key={t} className="flip-tech" style={{ background: `${exp.color}15`, color: exp.color, border: `1px solid ${exp.color}30` }}>{t}</span>
+                      ))}
+                    </div>
+                  )}
+                  <Link to={`/experiences/${exp.id}`} className="flip-link" style={{ color: exp.color, borderColor: `${exp.color}50` }}>
+                    Voir le détail →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
-      {/* ─── PROJETS — flip cards ─── */}
-      <section id="projects" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      {/* ─── PROJETS ─── */}
+      <section id="projects" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", flexWrap: "wrap", gap: "1rem" }}>
           <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800 }}>Projets récents</h2>
         </div>
@@ -542,7 +506,6 @@ export default function Home() {
           {projects.slice(0, 4).map((proj, i) => (
             <div className="pj-card-wrapper" key={proj.id} style={{ transitionDelay: `${i * 0.1}s` }}>
               <div className="pj-card">
-                {/* FACE AVANT */}
                 <div className="pj-face pj-front" style={{ borderColor: proj.color }}>
                   <span className="pj-bg-emoji">{proj.emoji}</span>
                   <div className="pj-front-top">
@@ -563,7 +526,6 @@ export default function Home() {
                   <p className="pj-hint">Survolez pour les détails →</p>
                   <div className="pj-glow" style={{ background: proj.color }} />
                 </div>
-                {/* FACE ARRIÈRE */}
                 <div className="pj-face pj-back" style={{ borderColor: proj.color }}>
                   <div className="pj-front-top">
                     <h3 className="pj-back-title" style={{ color: proj.color }}>{proj.title}</h3>
@@ -600,45 +562,41 @@ export default function Home() {
 
       <div style={{ height: 1, background: "rgba(56, 191, 248, 0.22)", maxWidth: 1200, margin: "0 auto" }} />
 
-{/* Formation */}
-<section id="education" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
-  <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "3rem" }}>
-    Mon parcours
-  </h2>
-  <div style={{ maxWidth: 700, marginBottom: "4rem" }} className="reveal">
-    <div className="timeline">
-      {education.map((e, i) => (
-        <div key={i} className="tl-item">
-          <div className="tl-dot" style={{ background: e.color, boxShadow: `0 0 12px ${e.color}88` }} />
-          <div className="card" style={{ borderLeft: `3px solid ${e.color}` }}>
-            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem" }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: "1.05rem", color: e.color }}>{e.degree}</div>
-                <div style={{ color: "var(--muted)", fontSize: "0.85rem", marginTop: "0.2rem" }}>{e.school}</div>
-                {e.note && <div style={{ color: "var(--green)", fontSize: "0.78rem", marginTop: "0.3rem" }}>{e.note}</div>}
+      {/* ─── FORMATION ─── */}
+      <section id="education" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
+        <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "3rem" }}>Mon parcours</h2>
+        <div style={{ maxWidth: 700, marginBottom: "4rem" }} className="reveal">
+          <div className="timeline">
+            {education.map((e, i) => (
+              <div key={i} className="tl-item">
+                <div className="tl-dot" style={{ background: e.color, boxShadow: `0 0 12px ${e.color}88` }} />
+                <div className="card" style={{ borderLeft: `3px solid ${e.color}` }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem" }}>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: "1.05rem", color: e.color }}>{e.degree}</div>
+                      <div style={{ color: "var(--muted)", fontSize: "0.85rem", marginTop: "0.2rem" }}>{e.school}</div>
+                      {e.note && <div style={{ color: "var(--green)", fontSize: "0.78rem", marginTop: "0.3rem" }}>{e.note}</div>}
+                    </div>
+                    <span style={{ fontFamily: "var(--mono)", fontSize: "0.78rem", color: e.color, fontWeight: 700 }}>{e.year}</span>
+                  </div>
+                </div>
               </div>
-              <span style={{ fontFamily: "var(--mono)", fontSize: "0.78rem", color: e.color, fontWeight: 700 }}>{e.year}</span>
-            </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       <div style={{ height: 1, background: "rgba(56, 191, 248, 0.22)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── RECOMMANDATIONS ─── */}
-      <section id="recs" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="recs" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "1rem" }}>Recommandations</h2>
         <p style={{ color: "#cbd5e1", marginBottom: "2.5rem" }}>Ce que disent mes encadrants et professeurs.</p>
         <div className="grid-2 reveal">
           {recommendations.map((r, i) => (
             <div key={i} className="card" style={{ borderTop: `3px solid ${r.color}` }}>
               <div style={{ fontSize: "2rem", marginBottom: "1rem", opacity: 0.4 }}>"</div>
-              <p style={{ color: "#cbd5e1", lineHeight: 1.85, fontSize: "0.9rem", marginBottom: "1.5rem", fontStyle: "italic" }}>
-                {r.text}
-              </p>
+              <p style={{ color: "#cbd5e1", lineHeight: 1.85, fontSize: "0.9rem", marginBottom: "1.5rem", fontStyle: "italic" }}>{r.text}</p>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", flexShrink: 0, background: `${r.color}25`, border: `2px solid ${r.color}50`, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.85rem", color: r.color }}>
                   {r.initials}
@@ -658,10 +616,8 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── ALTERNANCE ─── */}
-      <section id="alternance" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="alternance" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "3rem" }}>Recherche d'alternance</h2>
-
-        {/* Formation recherchée */}
         <div className="reveal" style={{ marginBottom: "3rem" }}>
           <div className="page-label" style={{ marginBottom: "1rem" }}>Formation recherchée</div>
           <div className="card" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
@@ -676,8 +632,6 @@ export default function Home() {
             </span>
           </div>
         </div>
-
-        {/* Domaines */}
         <div className="reveal" style={{ marginBottom: "3rem" }}>
           <div className="page-label" style={{ marginBottom: "1rem" }}>Domaines recherchés</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
@@ -686,20 +640,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        {/* Motivation */}
         <div className="reveal" style={{ marginBottom: "3rem" }}>
           <div className="page-label" style={{ marginBottom: "1rem" }}>Ma motivation</div>
           <div className="card" style={{ borderLeft: "3px solid var(--sky)" }}>
             <p style={{ color: "#cbd5e1" }}>{alternance.motivation}</p>
           </div>
         </div>
-
-        {/* CTA */}
         <div style={{ textAlign: "center" }}>
-          <a href="#contact"
-            onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
-            className="btn btn-outline">
+          <a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }} className="btn btn-outline">
             Me contacter →
           </a>
         </div>
@@ -708,37 +656,31 @@ export default function Home() {
       <div style={{ height: 1, background: "rgba(56,189,248,0.08)", maxWidth: 1200, margin: "0 auto" }} />
 
       {/* ─── CONTACT ─── */}
-<section id="contact" style={{ padding: "6rem 5vw", maxWidth: 1200, margin: "0 auto" }}>
-  <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "1rem", textAlign: "center" }}>
-    Travaillons ensemble
-  </h2>
-
-  {/* Boutons rapides */}
-  <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem", justifyContent: "center" }}>
-    <a href="https://www.linkedin.com/in/soa-razakamboly-7016b0327" target="_blank" rel="noopener noreferrer"
-      style={{ padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
-      LinkedIn
-    </a>
-    <a href="mailto:soa.raza.pro@gmail.com"
-      style={{ padding: "0.75rem 1.5rem", border: "2px solid #00c6ff", color: "#82c5d8", borderRadius: "999px", fontWeight: "600", textDecoration: "none", background: "transparent" }}>
-      soa.raza.pro@gmail.com
-    </a>
-  </div>
-
-  {/* Formulaire */}
-  <ContactForm />
-
-  {/* Footer */}
-  <footer style={{ marginTop: "4rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.25)", fontSize: "0.75rem", lineHeight: "1.7" }}>
-    <p>© 2026 <span style={{ color: "var(--sky)" }}>Soa Razakamboly</span> — <span style={{ color: "var(--lilac)" }}>Tous droits réservés</span></p>
-    <details style={{ marginTop: "0.4rem" }}>
-      <summary style={{ cursor: "pointer", opacity: 0.8 }}>Mentions légales</summary>
-      <p style={{ marginTop: "0.4rem" }}><strong>Éditeur :</strong> Soa M. Razakamboly — particulier</p>
-      <p><strong>Contact :</strong> soa.raza.pro@gmail.com</p>
-      <p><strong>Hébergeur :</strong> GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
-    </details>
-  </footer>
-</section>
+      <section id="contact" style={{ padding: sectionPad, maxWidth: 1200, margin: "0 auto" }}>
+        <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, marginBottom: "1rem", textAlign: "center" }}>
+          Travaillons ensemble
+        </h2>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem", justifyContent: "center" }}>
+          <a href="https://www.linkedin.com/in/soa-razakamboly-7016b0327" target="_blank" rel="noopener noreferrer"
+            style={{ padding: "0.75rem 1.5rem", background: "linear-gradient(135deg, #00c6ff, #0072ff)", color: "#fff", borderRadius: "999px", fontWeight: "600", textDecoration: "none" }}>
+            LinkedIn
+          </a>
+          <a href="mailto:soa.raza.pro@gmail.com"
+            style={{ padding: "0.75rem 1.5rem", border: "2px solid #00c6ff", color: "#82c5d8", borderRadius: "999px", fontWeight: "600", textDecoration: "none", background: "transparent" }}>
+            soa.raza.pro@gmail.com
+          </a>
+        </div>
+        <ContactForm />
+        <footer style={{ marginTop: "4rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.25)", fontSize: "0.75rem", lineHeight: "1.7" }}>
+          <p>© 2026 <span style={{ color: "var(--sky)" }}>Soa Razakamboly</span> — <span style={{ color: "var(--lilac)" }}>Tous droits réservés</span></p>
+          <details style={{ marginTop: "0.4rem" }}>
+            <summary style={{ cursor: "pointer", opacity: 0.8 }}>Mentions légales</summary>
+            <p style={{ marginTop: "0.4rem" }}><strong>Éditeur :</strong> Soa M. Razakamboly — particulier</p>
+            <p><strong>Contact :</strong> soa.raza.pro@gmail.com</p>
+            <p><strong>Hébergeur :</strong> GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
+          </details>
+        </footer>
+      </section>
     </>
   );
 }
